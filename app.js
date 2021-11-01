@@ -1,4 +1,5 @@
 const express = require("express");
+const pool = require("./dbPool.js");
 const app = express();
 
 //Used to parse the body of a post request.
