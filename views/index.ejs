@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
-    <%- include('partials/header.ejs') %>
 
     <body>
 
-        <main>
-            <h2>SQL Study</h2>
-            <br>
-            <img src="img/example.png">
-            <br>
-        </main>
+        <nav>
+            <span class="navbar-brand" href="#">SQL Study</span>
+            <div class="topnav">
+                <a class="active" href="/" style = "padding-right: 50px; text-decoration: none;">Home</a>
+                <a class = "nav-link"href="/about" style = "padding-right: 50px; text-decoration: none; color:white;">About</a>
+                <a class = "nav-link"href="/login" style = "padding-right: 50px; text-decoration: none; color:white;">Log In</a>
+                <a class = "nav-link"href="/signup" style = "padding-right: 50px; text-decoration: none; color:white;">Sign Up</a>
+            </div>
 
         <%- include('partials/footer.ejs') %>
 
