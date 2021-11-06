@@ -1,0 +1,9 @@
+body {
+    background-color: #CBBEB5;
+    text-align: center;
+}
+
+.admin-card {
+    text-align: left;
+    width: 40rem;
+}

@@ -13,84 +13,120 @@ app.use(express.static("public"));
 //routes
 app.get("/", function(req, res){
     res.render("index");
-});
+}); // "/"
 
+app.get("/admin", function(req, res){
+    res.render("admin");
+}); // "/admin"
 
-//apis
+app.get("/admin/chapters/add", function(req, res){
+    res.render("addChapter");
+}); // "/admin/chapters/add"
+
+app.get("/admin/pages/add", function(req, res){
+    res.render("addPage");
+}); // "/admin/pages/add"
+
 app.get("/chapters", function(req, res){
-    let sql = "SELECT * FROM chapters";
+    let sql;
+
+    switch (req.query.action) {
+        case "all":       sql = "SELECT * FROM chapters";
+                          break;
+        case "titles":    sql = "SELECT id, title FROM chapters";
+                          break;
+        default:          res.status(400).send('Invalid API action');
+                          return;
+    }
 
     pool.query(sql, function (err, rows, fields) {
-        if (err) throw err;
+        if (err) {
+            console.log(err);
+            res.status(500).send('Internal database error');
+        }
         // console.log(rows); //testing
         res.send(rows);//sends data
     });
-});
+}); // "/chapters"
 
 app.post("/admin/chapters/add", function(req, res){
     let sql = "INSERT INTO chapters (title, description) VALUES (?,?)";
     let sqlParams = [req.body.title, req.body.description];
 
     pool.query(sql, sqlParams, function(err, rows, fields) {
-        if (err) throw err;
+        if (err) console.log(err);
         // console.log(rows); //testing
-        res.send(rows);//sends data
+        res.render("admin");
     });
-});
+}); // "/admin/chapters/add"
 
 app.post("/admin/chapters/edit", function(req, res){
     let sql = "UPDATE chapters SET title = ?, description = ? WHERE id = ?";
     let sqlParams = [req.body.title, req.body.description, req.body.id];
 
     pool.query(sql, sqlParams, function(err, rows, fields) {
-        if (err) throw err;
+        if (err) console.log(err);
         // console.log(rows); //testing
         res.send(rows);//sends data
     });
-});
+}); // "/admin/chapters/edit"
 
 app.get("/pages", function(req, res){
     let sql;
     let sqlParams = [];
 
     switch(req.query.action){
-        case "page":        sql = "SELECT * FROM pages WHERE id = ?";
+        case "page":      sql = "SELECT * FROM pages WHERE id = ?";
                           sqlParams.push(req.query.id);
                           break;
         case "chapter":   sql = "SELECT * FROM pages WHERE chapter_id = ?";
                           sqlParams.push(req.query.id);
                           break;
+        case "titles":    sql = `
+                          SELECT ch.id AS chapter_id,
+                                 ch.title AS chapter_title,
+                                 p.id AS page_id,
+                                 p.title AS page_title
+                          FROM pages AS p
+                          JOIN chapters AS ch
+                              ON ch.id = p.chapter_id
+                          ORDER BY ch.id, p.id
+                          `;
+                          break;
+        default:          res.status(400).send('Invalid API action');
     }
 
     pool.query(sql, sqlParams, function (err, rows, fields) {
-        if (err) throw err;
+        if (err) {
+            console.log(err);
+            res.status(500).send('Internal database error');
+        }
         // console.log(rows); //testing
         res.send(rows);//sends data
     });
-});
+}); // "/admin/pages"
 
 app.post("/admin/pages/add", function(req, res){
    let sql = "INSERT INTO pages (chapter_id, title, body) VALUES (?,?,?)";
-   let sqlParams = [req.body.chapter_id, req.body.title, req.body.body];
+   let sqlParams = [req.body.chapter, req.body.title, req.body.body];
 
    pool.query(sql, sqlParams, function(err, rows, fields) {
-      if (err) throw err;
+      if (err) console.log(err);
       // console.log(rows); //testing
-      res.send(rows);//sends data
+      res.render("admin");
    });
-});
+}); // "/admin/pages/add"
 
 app.post("/admin/pages/edit", function(req, res){
     let sql = "UPDATE pages SET title = ?, body = ? WHERE id = ?";
     let sqlParams = [req.body.title, req.body.body, req.body.id];
 
     pool.query(sql, sqlParams, function(err, rows, fields) {
-        if (err) throw err;
+        if (err) console.log(err);
         // console.log(rows); //testing
         res.send(rows);//sends data
     });
-});
-
+}); // "/admin/pages/edit"
 
 //starting server
 app.listen(process.env.PORT || 3000, process.env.IP, function(){
