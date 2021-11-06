@@ -43,9 +43,10 @@ app.get("/chapters", function(req, res){
         if (err) {
             console.log(err);
             res.status(500).send('Internal database error');
+        } else {
+            // console.log(rows); //testing
+            res.send(rows);//sends data
         }
-        // console.log(rows); //testing
-        res.send(rows);//sends data
     });
 }); // "/chapters"
 
@@ -94,15 +95,17 @@ app.get("/pages", function(req, res){
                           `;
                           break;
         default:          res.status(400).send('Invalid API action');
+                          return;
     }
 
     pool.query(sql, sqlParams, function (err, rows, fields) {
         if (err) {
             console.log(err);
             res.status(500).send('Internal database error');
+        } else {
+          // console.log(rows); //testing
+          res.send(rows);//sends
         }
-        // console.log(rows); //testing
-        res.send(rows);//sends data
     });
 }); // "/admin/pages"
 
