@@ -27,6 +27,14 @@ app.get("/admin/pages/add", function(req, res){
     res.render("addPage");
 }); // "/admin/pages/add"
 
+// app.get("/admin/chapters/edit", function(req, res){
+//     res.render("editChapter");
+// }); // "/admin/chapters/edit"
+
+app.get("/admin/pages/edit", function(req, res){
+    res.render("editPage");
+}); // "/admin/pages/edit"
+
 app.get("/chapters", function(req, res){
     let sql;
 
