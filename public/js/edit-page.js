@@ -12,6 +12,7 @@ $(document).ready(function(){
         // console.log(data); //For testing purposes only
 
         //Display dropdown menu of chapters and build page_titles object.
+        $("#chapter").html("");
         $("#chapter").append(`<option value=""> ----- </option>`);
         for(let i = 0; i < data.length; i++){
             if (page_titles[data[i].chapter_id] == undefined) {
@@ -22,6 +23,7 @@ $(document).ready(function(){
         }
     }
 
+    //Load page titles into page dropdown based upon change in chapter dropdown
     $('#chapter').on("change", function(){
         $("#page").html("");
         if ($('#chapter').val()) {
@@ -33,6 +35,7 @@ $(document).ready(function(){
         }
     });
 
+    //Load page title and body based upon change in page dropdown
     $("#page").on("change", function(){
         clearPage();
         if ($('#page').val()) {
@@ -43,6 +46,7 @@ $(document).ready(function(){
         }
     });
 
+    //Load page from API into page and make new SimpleMDE object to build the markdown editor
     async function loadPage(page_id) {
         let url = `/pages?action=page&id=${page_id}`;
         let response = await fetch(url);

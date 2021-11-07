@@ -27,14 +27,21 @@ app.get("/admin/pages/add", function(req, res){
     res.render("addPage");
 }); // "/admin/pages/add"
 
-// app.get("/admin/chapters/edit", function(req, res){
-//     res.render("editChapter");
-// }); // "/admin/chapters/edit"
+app.get("/admin/chapters/edit", function(req, res){
+    res.render("editChapter");
+}); // "/admin/chapters/edit"
 
 app.get("/admin/pages/edit", function(req, res){
     res.render("editPage");
 }); // "/admin/pages/edit"
 
+/*
+Two APIs for getting chapters from database.
+1. /chapters?action=all
+    -Returns all data from the chapters table.
+2. /chapters?action=titles
+    -Returns the id and title for every chapter
+*/
 app.get("/chapters", function(req, res){
     let sql;
 
@@ -58,6 +65,7 @@ app.get("/chapters", function(req, res){
     });
 }); // "/chapters"
 
+//Receives post form request
 app.post("/admin/chapters/add", function(req, res){
     let sql = "INSERT INTO chapters (title, description) VALUES (?,?)";
     let sqlParams = [req.body.title, req.body.description];
@@ -69,17 +77,27 @@ app.post("/admin/chapters/add", function(req, res){
     });
 }); // "/admin/chapters/add"
 
+//Receives post form request
 app.post("/admin/chapters/edit", function(req, res){
     let sql = "UPDATE chapters SET title = ?, description = ? WHERE id = ?";
-    let sqlParams = [req.body.title, req.body.description, req.body.id];
+    let sqlParams = [req.body.title, req.body.description, req.body.chapter];
 
     pool.query(sql, sqlParams, function(err, rows, fields) {
         if (err) console.log(err);
         // console.log(rows); //testing
-        res.send(rows);//sends data
+        res.render("admin");
     });
 }); // "/admin/chapters/edit"
 
+/*
+Three APIs for getting pages from database.
+1. /pages?action=page&id={}
+    -Returns a single page based upon the page_id
+2. /pages?action=chapter&id={}
+    -Returns an entire chapter of pages based upon the chapter_id
+3. /pages?action=titles
+    -Returns all titles in the format: page_title, page_id, chapter_title, chapter_id
+*/
 app.get("/pages", function(req, res){
     let sql;
     let sqlParams = [];
@@ -117,25 +135,27 @@ app.get("/pages", function(req, res){
     });
 }); // "/admin/pages"
 
+//Receives post form request
 app.post("/admin/pages/add", function(req, res){
    let sql = "INSERT INTO pages (chapter_id, title, body) VALUES (?,?,?)";
    let sqlParams = [req.body.chapter, req.body.title, req.body.body];
 
    pool.query(sql, sqlParams, function(err, rows, fields) {
-      if (err) console.log(err);
-      // console.log(rows); //testing
-      res.render("admin");
+        if (err) console.log(err);
+        // console.log(rows); //testing
+        res.render("admin");
    });
 }); // "/admin/pages/add"
 
+//Receives post form request
 app.post("/admin/pages/edit", function(req, res){
     let sql = "UPDATE pages SET title = ?, body = ? WHERE id = ?";
-    let sqlParams = [req.body.title, req.body.body, req.body.id];
+    let sqlParams = [req.body.title, req.body.body, req.body.page];
 
     pool.query(sql, sqlParams, function(err, rows, fields) {
         if (err) console.log(err);
         // console.log(rows); //testing
-        res.send(rows);//sends data
+        res.render("admin");
     });
 }); // "/admin/pages/edit"
 
