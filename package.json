@@ -1,24 +1,28 @@
 {
-  "name": "sql-study",
-  "version": "1.0.0",
-  "description": "A website that teaches people how to use relation databases using SQL.",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/apainintheneck/SQL-Study.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/apainintheneck/SQL-Study/issues"
-  },
-  "homepage": "https://github.com/apainintheneck/SQL-Study#readme",
-  "dependencies": {
-    "dotenv": "^10.0.0",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1"
-  }
+    "name": "SQL-Study",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@hookform/resolvers": "^2.7.1",
+        "bcryptjs": "^2.4.3",
+        "express-jwt": "^6.1.0",
+        "jsonwebtoken": "^8.5.1",
+        "next": "^11.1.2",
+        "prop-types": "^15.7.2",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-hook-form": "^7.12.1",
+        "rxjs": "^7.3.0",
+        "yup": "^0.32.9"
+    },
+    "devDependencies": {
+        "eslint": "7.32.0",
+        "eslint-config-next": "11.1.0"
+    }
 }
