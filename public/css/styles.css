@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 body {
     margin: 0;
     text-align:center;
@@ -35,7 +35,7 @@ body {
     background-color: #1B2B65;
     color: white;
   }
-.topnav{
+.navbar{
   list-style-type: none;
   margin: 0;
   padding: 0;
