@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <%- include('partials/header.ejs') %>
+    <%- include('partials/head.ejs') %>
+    <body style ="background-color:#081A51;">
+        <nav>
+            <div class="navbar">
+                <img src="/img/sql study logo.png" alt="" width="120" height="96" class="d-inline-block align-text-top">
+                <a class="active" href="/" style = "padding-right: 50px; text-decoration: none;">Home</a>
+                <a class = "nav-link"href="/about" style = "padding-right: 50px; text-decoration: none; color:white;">About</a>
+                <a class = "nav-link"href="/login" style = "padding-right: 50px; text-decoration: none; color:white;">Log In</a>
+                <a class = "nav-link"href="/signup" style = "padding-right: 50px; text-decoration: none; color:white;">Sign Up</a>
+            </div>
+        </nav>
+        <p style ="color: white; font-family: 'Montserrat', sans-serif; font-size: 90px; font-weight:700; text-align: center; margin-top: 50px;">
+          SQL Study
+        </p>
+        <div style ="max-width:700px; margin:0 auto">
+            <p style ="color: white; font-family: 'Montserrat', sans-serif; font-size: 20px; margin-top: 50px; ">
+                Ever wondered what working with databases would be like? We promise you it’s easier than what you would expect! Our website will take you through the steps and whether you’re a complete beginner or just looking for a refresher, our website will guide you each step of the way!
+                <br>
+                <br>
 
-    <body>
-
-        <main>
-            <h2>SQL Study</h2>
-            <br>
-            <img src="img/example.png">
-            <br>
-        </main>
-
+                <button type = "button" class="btn btn-outline-light">Join for Free Today</button>
+            </p>
+        </div>
+        <figure style ="text-align: center;">
+            <img src="/img/SQL Image.jpeg" alt=""  class="d-inline-block align-text-top rounded">
+        <p>
+            <a href="https://bootcamp.berkeley.edu/resources/coding/learn-sql/">Image via Berkleley Bootcamp
+            </a>
+        </p>
+        </figure>
         <%- include('partials/footer.ejs') %>
 
     </body>
