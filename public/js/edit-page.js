@@ -26,6 +26,8 @@ $(document).ready(function(){
     //Load page titles into page dropdown based upon change in chapter dropdown
     $('#chapter').on("change", function(){
         $("#page").html("");
+        clearPage();
+        disableTextInputs();
         if ($('#chapter').val()) {
             $("#page").append(`<option value=""> ----- </option>`);
             let pages = page_titles[$('#chapter').val()];
@@ -41,8 +43,7 @@ $(document).ready(function(){
         if ($('#page').val()) {
             loadPage($("#page").val());
         } else {
-            $('#title').attr('disabled', true);
-            $('#body').attr('disabled', true);
+            disableTextInputs();
         }
     });
 
@@ -71,6 +72,11 @@ $(document).ready(function(){
         }
         $('#title').val('');
         $('#body').val('');
+    }
+
+    function disableTextInputs(){
+        $('#title').attr('disabled', true);
+        $('#body').attr('disabled', true);
     }
 
 });//JQuery Ready function
