@@ -11,11 +11,11 @@ app.use(express.static("public"));
 
 
 //routes
-
 app.get("/dashboard", function(req, res){
   res.render("dashboard");
 });
 
+app.get("/", function(req, res){
     res.render("index");
 }); // "/"
 
