@@ -12,8 +12,8 @@ app.use(express.static("public"));
 
 //routes
 
-app.get("/signup", function(req, res){
-  res.render("register");
+app.get("/login", function(req, res){
+  res.render("login");
 });
 app.get("/dashboard", function(req, res){
     res.render("dashboard");
