@@ -8,7 +8,6 @@ body {
   li a {
     display: block;
     color: #fff;
-    padding: 8px 16px;
     text-decoration: none;
   }
   
@@ -85,4 +84,7 @@ body {
       width: calc(100% - 17rem);
     }
   }
+ .nav-item.active{
   
+    color: #48B4E9;
+ }
