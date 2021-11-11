@@ -21,7 +21,7 @@ app.get("/dashboard", function(req, res){
   app.get("/", function(req, res){
     res.render("index");
   });
-   
+
 // "/"
 
 app.get("/admin", function(req, res){
@@ -167,6 +167,7 @@ app.post("/admin/pages/edit", function(req, res){
         res.render("admin");
     });
 }); // "/admin/pages/edit"
+
 
 //starting server
 app.listen(process.env.PORT || 3000, process.env.IP, function(){
