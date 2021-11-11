@@ -11,6 +11,10 @@ app.use(express.static("public"));
 
 
 //routes
+app.get("/dashboard", function(req, res){
+  res.render("dashboard");
+});
+
 app.get("/", function(req, res){
     res.render("index");
 }); // "/"
@@ -158,6 +162,7 @@ app.post("/admin/pages/edit", function(req, res){
         res.render("admin");
     });
 }); // "/admin/pages/edit"
+
 
 //starting server
 app.listen(process.env.PORT || 3000, process.env.IP, function(){
