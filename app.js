@@ -13,6 +13,9 @@ app.use(express.static("public"));
 app.get("/", function(req, res){
   res.render("index");
 });
+app.get("/dashboard", function(req, res){
+  res.render("dashboard");
+});
 
 //starting server
 app.listen(process.env.PORT || 3000, process.env.IP, function(){

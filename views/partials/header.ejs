@@ -1,6 +1,76 @@
-<ul>
-  <li><a class="active" href="#dashboard">Dashboard</a></li>
-  <li><a href="#lecture">Lecture</a></li>
-  <li><a href="#quiz">Quizzes</a></li>
-  <li><a href="#sandbox">Sandbox</a></li>
-</ul>
+
+<body>
+<!-- Vertical navbar -->
+<div class="vertical-nav" id="sidebar">
+  <div class="py-4 px-3 mb-4 bg-light">
+    <div class="media d-flex align-items-center"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs9_lLKlxl0JKxK_VXyzv6nTwhJnAUuXrsID8PKyKetOZMn0x4WsYkNeVa7aMFc7rOoKE&usqp=CAU" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+      <div class="media-body">
+        <h4 class="m-0">Jason Doe</h4>
+        <p class="font-weight-light text-muted mb-0">Student</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main Menu</p>
+
+  <ul class="nav flex-column bg-white mb-0">
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic bg-light">
+                <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                Dashboard
+            </a>
+    </li>
+    <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Workspace</p>
+
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+                <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+                Lecture
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+                <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
+                Quizzes
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+                <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
+                Sandbox
+            </a>
+    </li>
+  </ul>
+
+  
+</div>
+<!-- End vertical navbar -->
+
+
+<!-- Page content holder -->
+<div class="page-content p-5" id="content">
+  <!-- Toggle button -->
+  <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button>
+  <div class="separator"></div>
+  <div class="row text-white">
+    <div class="col-lg-7">
+      <div class="bg-white p-5 rounded my-5 shadow-sm">
+        <p class="lead font-italic mb-0 text-muted">"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+      </div>  
+    </div>
+  </div>
+</div>
+
+<script>
+    $(function() {
+// Sidebar toggle behavior
+$('#sidebarCollapse').on('click', function() {
+$('#sidebar, #content').toggleClass('active');
+});
+});
+</script>
+
+<!-- End demo content -->
+</body>
+
