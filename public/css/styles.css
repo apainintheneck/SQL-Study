@@ -2,20 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 body {
     margin: 0;
-    text-align:center;
   }
-  
+
   li a {
     display: block;
     color: #fff;
     text-decoration: none;
   }
-  
+
   li a.active {
     background-color: #1B2B65;
     color: #51CBFF;
   }
-  
+
   li a:hover:not(.active) {
     background-color: #1B2B65;
     color: white;
@@ -50,24 +49,24 @@ body {
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.4s;
   }
-  
+
   .page-content {
     width: calc(100% - 17rem);
     margin-left: 17rem;
     transition: all 0.4s;
   }
-  
+
   /* for toggle behavior */
-  
+
   #sidebar.active {
     margin-left: -17rem;
   }
-  
+
   #content.active {
     width: 100%;
     margin: 0;
   }
-  
+
   @media (max-width: 768px) {
     #sidebar {
       margin-left: -17rem;
@@ -85,6 +84,6 @@ body {
     }
   }
  .nav-item.active{
-  
+
     color: #48B4E9;
  }

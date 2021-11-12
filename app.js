@@ -11,18 +11,17 @@ app.use(express.static("public"));
 
 
 //routes
-
 app.get("/login", function(req, res){
   res.render("login");
-});
+});// "/login"
+
 app.get("/dashboard", function(req, res){
     res.render("dashboard");
-  });
-  app.get("/", function(req, res){
-    res.render("index");
-  });
+});// "/dashboard"
 
-// "/"
+app.get("/", function(req, res){
+    res.render("index");
+});// "/"
 
 app.get("/admin", function(req, res){
     res.render("admin");
