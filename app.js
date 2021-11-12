@@ -21,7 +21,9 @@ app.get("/dashboard", function(req, res){
   app.get("/", function(req, res){
     res.render("index");
   });
-
+  app.get("/signup", function(req, res){
+    res.render("signup");
+  });
 // "/"
 
 app.get("/admin", function(req, res){
