@@ -20,6 +20,7 @@ function error(e) {
 	console.log(e);
 	errorElm.style.height = '2em';
 	errorElm.textContent = e.message;
+	outputElm.innerHTML = "";
 }
 
 function noerror() {
@@ -45,7 +46,6 @@ function execute(commands) {
 		toc("Displaying results");
 	}
 	worker.postMessage({ action: 'exec', sql: commands });
-	outputElm.textContent = "Fetching results...";
 }
 
 // Create an HTML table
@@ -61,6 +61,7 @@ var tableCreate = function () {
 		var rows = values.map(function (v) { return valconcat(v, 'td'); });
 		html += '<tbody>' + valconcat(rows, 'tr') + '</tbody>';
 		tbl.innerHTML = html;
+		tbl.className = "table";
 		return tbl;
 	}
 }();
