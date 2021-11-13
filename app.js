@@ -11,7 +11,6 @@ app.use(express.static("public"));
 
 
 //routes
-
 app.get("/login", function(req, res){
   res.render("login");
 });
