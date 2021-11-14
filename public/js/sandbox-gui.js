@@ -18,8 +18,13 @@ function print(text) {
 }
 function error(e) {
 	console.log(e);
-	errorElm.style.height = '2em';
-	errorElm.textContent = e.message;
+	errorElm.style.height = '4.5em';
+	errorElm.innerHTML = `
+<div class="card border-danger mx-auto mb-3 mt-3" style="max-width: 25rem;">
+  <div class="card-body text-danger">
+    <p class="card-text">${e.message}</p>
+  </div>
+</div>`;
 	outputElm.innerHTML = "";
 }
 

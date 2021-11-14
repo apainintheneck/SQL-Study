@@ -52,18 +52,6 @@ h1 {
   overflow-x: auto;
 }
 
-.error {
-	color:red;
-	transition:.5s;
-	overflow:hidden;
-	margin: 15px;
-}
-
-#output {
-	overflow: auto;
-}
-
 footer {
 	font-size:.8em;
-	color: #222;
 }
