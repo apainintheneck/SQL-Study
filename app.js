@@ -13,11 +13,15 @@ app.use(express.static("public"));
 //routes
 app.get("/login", function(req, res){
   res.render("login");
-});// "/login"
+});
 
 app.get("/dashboard", function(req, res){
     res.render("dashboard");
-});// "/dashboard"
+});
+
+app.get("/sandbox", function(req, res){
+    res.render("sandbox");
+});
 
 app.get("/", function(req, res){
     res.render("index");
