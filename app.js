@@ -14,8 +14,11 @@ app.use(express.static("public"));
 app.get("/login", function(req, res){
   res.render("login");
 });
+app.get("/quiztester", function(req, res){
+    res.render("quiztester");
+  });
 
-app.get("/dashboard", function(req, res){
+  app.get("/dashboard", function(req, res){
     res.render("dashboard");
 });
 
@@ -23,9 +26,16 @@ app.get("/sandbox", function(req, res){
     res.render("sandbox");
 });
 
+app.get("/quiz2", function(req, res){
+    res.render("quiz2");
+});
+
 app.get("/", function(req, res){
     res.render("index");
 });// "/"
+app.get("/quiz2", function(req, res){
+    res.render("quiz2");
+});
 
 app.get("/admin", function(req, res){
     res.render("admin");
