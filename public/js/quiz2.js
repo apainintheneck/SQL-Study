@@ -8,7 +8,7 @@ $(document).ready(function(){
     displayQ2Choices();
      
     function displayQ2Choices(){
-        let q2ChoicesArray = ["22095", "3306", "25565", "22"];
+        let q2ChoicesArray = ["NONE", "NULL", "ZERO", "EMPTY"];
         q2ChoicesArray = _.shuffle(q2ChoicesArray);
         
         for (let i = 0; i < q2ChoicesArray.length; i++){
@@ -86,14 +86,14 @@ $(document).ready(function(){
         }
 
         //Question 2
-        if(q2Response == "3306") {
+        if(q2Response == "NULL") {
             rightAnswer(2);
         }else{
             wrongAnswer(2);
         }
             
         //Question 3
-        if ($("#FLOAT").is(":checked") && $("#DATE").is(":checked") && !$("#MONEY").is(":checked") && $("#VARCHAR").is(":checked")) {
+        if ($("#FLOAT").is(":checked") && $("#DATE").is(":checked") && !$("#DOLLARS").is(":checked") && $("#VARCHAR").is(":checked")) {
             rightAnswer(3);
         } else {
             wrongAnswer(3);
