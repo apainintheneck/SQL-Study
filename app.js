@@ -23,10 +23,6 @@ app.get("/sandbox", function(req, res){
     res.render("sandbox");
 });
 
-app.get("/quiz2", function(req, res){
-    res.render("quiz2");
-});
-
 app.get("/", function(req, res){
     res.render("index");
 });// "/"
@@ -50,6 +46,15 @@ app.get("/admin/chapters/edit", function(req, res){
 app.get("/admin/pages/edit", function(req, res){
     res.render("editPage");
 }); // "/admin/pages/edit"
+
+app.get('/quizzes', function(req , res){
+    res.render('quizzes');
+});
+
+
+app.get('/quizzes/:id', function(req , res){
+    res.render('quiz' + req.params.id);
+});
 
 /*
 Two APIs for getting chapters from database.
