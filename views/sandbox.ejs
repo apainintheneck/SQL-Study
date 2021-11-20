@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf8">
-  <%- include('partials/imports.ejs') %>
+  <%- include('partials/head.ejs') %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.js"></script>
   <link rel="stylesheet" href="css/sandbox.css">
@@ -45,7 +45,7 @@ CREATE TABLE employees( id          integer,  name    text,
 
 SELECT designation,COUNT(*) AS nbr, (AVG(salary)) AS avg_salary FROM employees GROUP BY designation ORDER BY avg_salary DESC;
 SELECT name,hired_on FROM employees ORDER BY hired_on;</textarea>
-    
+
     <button id="execute" class="button">Execute</button>
     <button id='savedb' class="button">Save the db</button>
     <label class="button">Load an SQLite database file: <input type='file' id='dbfile'></label>
