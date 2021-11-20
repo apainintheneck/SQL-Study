@@ -31,12 +31,19 @@ body {
   font-family: Roboto-regular;
     font-size: 40px;
 }
-.active {
+ .nav-link.active {
+    background-color: #1B2B65;
     color: #48B4E9;
-}
- .nav-link:hover:not(.active) {
+    margin:5px;
+    border-radius: 5px;
+  }
+  .active {
+    color: #48B4E9;
+  }
+  .nav-link:hover:not(.active) {
     background-color: #1B2B65;
     color: white;
+    border-radius: 10px;
   }
 
   .vertical-nav {
@@ -82,8 +89,12 @@ body {
       margin-left: 17rem;
       width: calc(100% - 17rem);
     }
+    .page-content {
+      width: 100%;
+      margin-left: 0rem;
+      transition: all 0.4s;
+    }
   }
  .nav-item.active{
-
     color: #48B4E9;
  }
