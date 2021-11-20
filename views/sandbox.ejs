@@ -5,8 +5,8 @@
   <meta charset="utf8">
   <%- include('partials/head.ejs') %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.css">
-  <link rel="stylesheet" href="css/sandbox.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.js"></script>
+  <link rel="stylesheet" href="css/sandbox.css">
 </head>
 
 <body>
@@ -14,9 +14,10 @@
 
   <br><br>
 
-  <h1 class="page-content">SQL Sandbox</h1>
-
   <main class="page-content">
+    <!-- Modified version of the example Sqlite Interpreter(https://sql-js.github.io/sql.js/examples/GUI/index.html) from the SQL.js(https://github.com/sql-js/sql.js/) project as of November 2021 -->
+    <h1>SQL Sandbox</h1>
+
     <label for='commands' class="text-center">Enter some SQL</label>
     <br>
 

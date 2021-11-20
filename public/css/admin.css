@@ -4,12 +4,11 @@ body {
     margin: 0;
   }
 
-.active {
-    color: #48B4E9;
-}
- .nav-link:hover:not(.active) {
-    background-color: #1B2B65;
-    color: white;
+  .nav-link.active {
+     background-color: #1B2B65;
+     color: #48B4E9;
+     margin:5px;
+     border-radius: 5px;
   }
 
   .vertical-nav {
@@ -56,12 +55,11 @@ body {
       width: calc(100% - 17rem);
     }
     .page-content {
-      max-width: 100%;
+      width: 100%;
       margin-left: 0rem;
       transition: all 0.4s;
     }
   }
  .nav-item.active{
-
     color: #48B4E9;
  }
