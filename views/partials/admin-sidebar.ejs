@@ -1,7 +1,9 @@
 <!-- Vertical navbar -->
+<!-- Requires imports.ejs and sidebar.css to be added to head tag. -->
+
 <div class="vertical-nav text-center" id="sidebar" style ="background-color: #081A51;">
   <div class="py-4 px-3 mb-4 ">
-    <div class="media d-flex align-items-center">
+    <div class="media d-flex align-items-center" id="nav-title">
       <img src="/img/database.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
       <div class="media-body">
         <h4 class="m-0" style = "color:white; padding-left:15px;">SQL Study</h4>
@@ -13,8 +15,8 @@
   <p class="text-gray font-weight-bold text-uppercase px-3 small mb-0" style ="color:#f0f8ff; padding:10px; text-align:left;">Main Menu</p>
 
   <ul class="nav flex-column"  >
-    <li class="nav-item active" style="padding:5px;">
-      <a href="/admin" class="nav-link active font-italic">
+    <li class="nav-item">
+      <a href="/admin" class="nav-link font-italic">
                 Home
             </a>
     </li>
@@ -22,12 +24,12 @@
     <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0" style ="color:#f0f8ff;text-align:left;">Chapters</p>
 
     <li class="nav-item">
-      <a href="/admin/chapters/add" class="nav-link active font-italic">
+      <a href="/admin/chapters/add" class="nav-link font-italic">
                 Add
             </a>
     </li>
     <li class="nav-item">
-      <a href="/admin/chapters/edit" class="nav-link active font-italic">
+      <a href="/admin/chapters/edit" class="nav-link font-italic">
                 Edit
             </a>
     </li>
@@ -35,18 +37,17 @@
     <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0" style ="color:#f0f8ff;text-align:left;">Pages</p>
 
     <li class="nav-item">
-      <a href="/admin/pages/add" class="nav-link active font-italic">
+      <a href="/admin/pages/add" class="nav-link font-italic">
                 Add
             </a>
     </li>
     <li class="nav-item">
-      <a href="/admin/pages/edit" class="nav-link active font-italic">
+      <a href="/admin/pages/edit" class="nav-link font-italic">
                 Edit
             </a>
     </li>
     <hr style = "color:white;">
   </ul>
-
 
 </div>
 <!-- End vertical navbar -->

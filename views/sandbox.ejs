@@ -3,10 +3,11 @@
 
 <head>
   <meta charset="utf8">
-  <%- include('partials/head.ejs') %>
+  <%- include('partials/imports.ejs') %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.js"></script>
   <link rel="stylesheet" href="css/sandbox.css">
+  <link href="css/sidebar.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -14,7 +15,7 @@
 
   <br><br>
 
-  <main class="page-content">
+  <main id="content">
     <!-- Modified version of the example Sqlite Interpreter(https://sql-js.github.io/sql.js/examples/GUI/index.html) from the SQL.js(https://github.com/sql-js/sql.js/) project as of November 2021 -->
     <h1>SQL Sandbox</h1>
 
@@ -44,7 +45,7 @@ CREATE TABLE employees( id          integer,  name    text,
 
 SELECT designation,COUNT(*) AS nbr, (AVG(salary)) AS avg_salary FROM employees GROUP BY designation ORDER BY avg_salary DESC;
 SELECT name,hired_on FROM employees ORDER BY hired_on;</textarea>
-
+    
     <button id="execute" class="button">Execute</button>
     <button id='savedb' class="button">Save the db</button>
     <label class="button">Load an SQLite database file: <input type='file' id='dbfile'></label>
@@ -58,16 +59,15 @@ SELECT name,hired_on FROM employees ORDER BY hired_on;</textarea>
         </div>
       </div>
     </div>
+
+    <footer class="text-center">
+      Original work by kripken (<a href='https://github.com/sql-js/sql.js'>sql.js</a>).
+      C to Javascript compiler by kripken (<a href='https://github.com/kripken/emscripten'>emscripten</a>).
+      Project now maintained by <a href='https://github.com/lovasoa'>lovasoa</a>
+    </footer>
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/sql/sql.min.js"></script>
-
-  <footer class="page-content">
-    Original work by kripken (<a href='https://github.com/sql-js/sql.js'>sql.js</a>).
-    C to Javascript compiler by kripken (<a href='https://github.com/kripken/emscripten'>emscripten</a>).
-    Project now maintained by <a href='https://github.com/lovasoa'>lovasoa</a>
-  </footer>
-
   <script type="text/javascript" src="js/sandbox-gui.js"></script>
 </body>
 
