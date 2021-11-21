@@ -23,6 +23,14 @@ app.get("/sandbox", function(req, res){
     res.render("sandbox");
 });
 
+app.get("/lecture", function(req, res){
+    res.render("lecture");
+});
+
+app.get("/chapter", function(req, res){
+    res.render("chapter");
+});
+
 app.get("/", function(req, res){
     res.render("index");
 });// "/"
@@ -56,17 +64,20 @@ Two APIs for getting chapters from database.
 */
 app.get("/chapters", function(req, res){
     let sql;
-
+    let sqlParams = [];
     switch (req.query.action) {
         case "all":       sql = "SELECT * FROM chapters";
                           break;
         case "titles":    sql = "SELECT id, title FROM chapters";
                           break;
+        case "single":    sql = "SELECT * from chapters WHERE id = ?";
+                          sqlParams = [req.query.id];
+                          break;
         default:          res.status(400).send('Invalid API action');
                           return;
     }
 
-    pool.query(sql, function (err, rows, fields) {
+    pool.query(sql, sqlParams, function (err, rows, fields) {
         if (err) {
             console.log(err);
             res.status(500).send('Internal database error');
