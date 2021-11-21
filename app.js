@@ -23,8 +23,8 @@ app.get("/sandbox", function(req, res){
     res.render("sandbox");
 });
 
-app.get("/table-of-content", function(req, res){
-    res.render("tableOfContent");
+app.get("/lecture", function(req, res){
+    res.render("lecture");
 });
 
 app.get("/chapter", function(req, res){

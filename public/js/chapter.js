@@ -59,7 +59,7 @@ $(document).ready(function(){
             $("#chapter-title").append(`<div data-page-nav="${i + 1}" class="btn btn-primary" style ="float:right"> Next </div>`);
         } else if (i == (pages.length - 1)) {
             $("#chapter-title").append(`<div data-page-nav="${i - 1}" class="btn btn-primary"> Prev </div>`);
-            $("#chapter-title").append(`<a href="/table-of-content" class="btn btn-primary" style ="float:right"> Return to Table of Contents </a>`);
+            $("#chapter-title").append(`<a href="/lecture" class="btn btn-primary" style ="float:right"> Return to Table of Contents </a>`);
         } else {
             $("#chapter-title").append(`<div data-page-nav="${i + 1}" class="btn btn-primary" style = "float: right"> Next </div>`);
         }
