@@ -11,7 +11,7 @@ $(document).ready(function(){
         let url = "/chapters?action=single&id="+id;
         let response = await fetch(url);
         let data = await response.json();
-        console.log(data); //For testing purposes only
+        //console.log(data); //For testing purposes only
 
         //Display dropdown menu of chapters.
         
@@ -47,7 +47,7 @@ $(document).ready(function(){
         let url = "/pages?action=chapter&id="+id;
         let response = await fetch(url);
         let data = await response.json();
-        console.log(data); //For testing purposes only
+        //console.log(data); //For testing purposes only
         pages = data;        
     }
     var displayPage = function displayPage(i) {
