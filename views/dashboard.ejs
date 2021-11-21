@@ -2,23 +2,57 @@
 <html>
   <head>
     <%- include('partials/head.ejs') %>
+    <link href="css/sidebar.css" rel="stylesheet"/>
   </head>
 
 <body>
-  <%- include('partials/navbar.ejs') %>
+  <%- include('partials/sidebar.ejs') %>
         <!-- Page content holder -->
-  <div class="page-content p-5" id="content">
-    <!-- Toggle button -->
-    <!-- <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button> -->
-    <div class="separator"></div>
-    <div class="row text-white">
-      <div class="col-lg-7">
-        <div class="bg-white p-5 rounded my-5 shadow-sm">
-          <p class="lead font-italic mb-0 text-muted">"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+  <main id="content" style="max-width: 40rem;">
+
+    <div class="card">
+      <img src="img/db-graphic.jpg" class="card-img-top" alt="background image which shows a cloud and a databse">
+      <div class="card-body">
+        <h5 class="card-title">Welcome back, username!</h5>
+        <p class="card-text">Check out the lecture, quizzes and sandbox section to continue learning.</p>
+        <h5 class="card-title">Progress</h5>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
         </div>
+        <br>
+        <p class="card-text">You're making good progress learning SQL. Keep it up!</p>
+        <br>
+        <a href="#" class="btn btn-primary">Last Article Read</a>
       </div>
     </div>
-  </div>
+
+    <a href="/lecture">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title"><span class="badge bg-primary">Lecture</span></h5>
+          <p class="card-text">Learn the basics of SQL with the help of explanations, videos, tables and graphics.</p>
+        </div>
+      </div>
+    </a>
+
+    <a href="/quizzes">
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title"><span class="badge bg-primary">Quizzes</span></h5>
+          <p class="card-text">Test the knowledge you've learned from the lectures by taking a few quizzes.</p>
+        </div>
+      </div>
+    </a>
+
+    <a href="/sandbox">
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title"><span class="badge bg-primary">Sandbox</span></h5>
+          <p class="card-text">Play with a real life database in your browser.</p>
+        </div>
+      </div>
+    </a>
+
+  </main>
 </body>
 </html>
