@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/head.ejs') %>
+    <link href="css/sidebar.css" rel="stylesheet"/>
+  </head>
+
+<body>
+  <%- include('partials/sidebar.ejs') %>
+        <!-- Page content holder -->
+  <main id="content" style="max-width: 40rem;">
+
+    <div class="card">
+      <img src="img/db-graphic.jpg" class="card-img-top" alt="background image which shows a cloud and a databse">
+      <div class="card-body">
+        <h5 class="card-title">Quiz Section</h5>
+        <p class="card-text">Test the knowledge you've learned so far by taking a few quizzes. Each one covers content related to a chapter in the lecture section.</p>
+      </div>
+    </div>
+
+    <a href="/quizzes/1">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title"><span class="badge bg-primary">Quiz #1</span></h5>
+          <p class="card-text">Introduction to SQL: Test your knowledge of the theory behind relational databases.</p>
+        </div>
+      </div>
+    </a>
+
+    <a href="/quizzes/2">
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title"><span class="badge bg-primary">Quiz #2</span></h5>
+          <p class="card-text">Select Statements: Test your ability to select specific datasets from the database.</p>
+        </div>
+      </div>
+    </a>
+
+    <a href="/quizzes/3">
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title"><span class="badge bg-primary">Quiz #3</span></h5>
+          <p class="card-text">Joining Multiple Tables: Test your ability to join multiple tables together to retrieve the data needed from the database.</p>
+        </div>
+      </div>
+    </a>
+
+    <a href="/quizzes/4">
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title"><span class="badge bg-primary">Quiz #4</span></h5>
+          <p class="card-text">Insert, Update and Delete: Test your ability to modify and update data in the database.</p>
+        </div>
+      </div>
+    </a>
+
+  </main>
+</body>
+</html>
