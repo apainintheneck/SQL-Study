@@ -1,5 +1,8 @@
 const express = require("express");
+const passport = require("passport");
+const session = require("express-session");
 const pool = require("./dbPool.js");
+require("./auth");
 const app = express();
 
 //Used to parse the body of a post request.
@@ -9,10 +12,38 @@ app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
+//Middleware Function
+function isLoggedIn(req, res, next) {
+    req.user ? next() : res.sendStatus(401);
+};
+
+app.use(session({secret: "cats can be grumpy"}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 //routes
 app.get("/login", function(req, res){
   res.render("login");
+});
+
+app.get("/protected", isLoggedIn, (req, res) => {
+    res.render("dashboard");
+});
+
+app.get("/auth/google",
+    passport.authenticate("google", {scope: ["email", "profile"]})
+);
+
+app.get("/auth/google/callback",
+    passport.authenticate("google", {
+        successRedirect: "/protected",
+        failureRedirect: "/auth/failure",
+    })
+);
+
+app.get("/auth/failure", (req, res) =>{
+    res.render("signup");
 });
 
   app.get("/dashboard", function(req, res){
