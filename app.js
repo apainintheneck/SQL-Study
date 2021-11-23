@@ -1,19 +1,75 @@
 const express = require("express");
 const pool = require("./dbPool.js");
+const bodyParser = require('body-parser');
+const mysql = require('mysql2'); 
+const cookieParser = require('cookie-parser');
+const path = require('path');
+const session = require('express-session');
+const passport = require('passport');
+const passportConfig = require('./config/passport')(passport);
+const flash = require('express-flash-messages');
 const app = express();
+
+
+const { getHomePage } = require('./routes/index');
+const { handleLogout, postLogin, getLogin } = require('./routes/login');
+const { getFacebookLogin, handleFacebookLogin } = require('./routes/facebook_login');
+const { getGoogleLogin, handleGoogleLogin } = require('./routes/google_login');
+const { getRegister, submitRegister } = require('./routes/register');
 
 //Used to parse the body of a post request.
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
+app.set('port', process.env.PORT);
+app.set('views', __dirname + '/views');
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true  }));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+    secret: 'keyboard cat',
+    saveUninitialized: true,
+    resave: true
+  }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+const db = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
+});
+db.connect((err) => {
+    if (err) {
+        throw err;
+    }
+    console.log('connected to database');
+});
+// global.db = db;
 
 
 //routes
 app.get("/login", function(req, res){
   res.render("login");
 });
+
+//login, registration & authentication routes
+app.post('/login', postLogin);
+app.get('/login', getLogin);
+app.get('/logout', handleLogout);
+
+app.get('/signup', getRegister);
+app.post('/signup', submitRegister);
+
+app.get('/auth/facebook', getFacebookLogin);
+app.get('/auth/facebook/callback', handleFacebookLogin);
+app.get('/auth/google', getGoogleLogin);
+app.get('/auth/google/callback', handleGoogleLogin);
 
   app.get("/dashboard", function(req, res){
     res.render("dashboard");
@@ -22,6 +78,10 @@ app.get("/login", function(req, res){
 app.get("/sandbox", function(req, res){
     res.render("sandbox");
 });
+
+// app.get('/protected', (req, res) => {
+//     res.send('Hello!');
+// });
 
 app.get("/lecture", function(req, res){
     res.render("lecture");
