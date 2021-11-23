@@ -9,18 +9,20 @@
 <body>
   <%- include('partials/sidebar.ejs') %>
         <!-- Page content holder -->
-  <main id="content" style="max-width: 40rem;">
+  <main id="content">
+    <div class="mx-auto" style="max-width: 50rem;">
 
-    <div class="card mb-4">
-      <img src="img/db-graphic.jpg" class="card-img-top" alt="background image which shows a cloud and a databse">
-      <div class="card-body">
-        <h5 class="card-title">Lecture Section</h5>
-        <p class="card-text">Learn the basics of SQL with the help of explanations, videos, tables and graphics.</p>
+      <div class="card mb-4">
+        <img src="img/db-graphic.jpg" class="card-img-top" alt="background image which shows a cloud and a databse">
+        <div class="card-body">
+          <h5 class="card-title">Lecture Section</h5>
+          <p class="card-text">Learn the basics of SQL with the help of explanations, videos, tables and graphics.</p>
+        </div>
       </div>
+
+      <div id="chapter-title"></div>
+
     </div>
-
-    <div id="chapter-title"></div>
-
   </main>
 </body>
 </html>
