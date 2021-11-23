@@ -13,7 +13,7 @@ $(document).ready(function(){
         for(let i = 0; i < data.length; i++){
             $("#chapter-title").append(`
             <a href="/chapter?id=${data[i].id}">
-              <div class="card mt-2">
+              <div class="card border-primary mt-2">
                 <div class="card-body">
                   <h5 class="card-title"><span class="badge bg-primary">${data[i].title}</span></h5>
                   <p class="card-text">${data[i].description}</p>
