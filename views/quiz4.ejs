@@ -3,36 +3,36 @@
     <head>
         <meta charset="utf-8">
         <title> Chapter 4 Comprehension Quiz </title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">        
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" ></script> 
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" ></script>
         <script src="/js/quiz4.js"></script>
-        
-        <%- include('partials/head.ejs') %>  
+
+        <%- include('partials/head.ejs') %>
     </head>
-   
+
     <body class="text-center" style ="background-color:#081A51; color: white;">
-        
+
         <h1 class="jumbotron" style = "color: black;">Chapter 4 Comprehension Quiz</h1>
-        
+
         <h3><span id ="markImg1"></span>Which of the following is not a valid SQL type?
-        </h3>   
+        </h3>
         <div id="q1Choices"></div>
         <div id ="q1Feedback"></div>
         <hr>
-        
+
         <h3><span id ="markImg2"></span>What is the maximum length of the CHAR data type?</h3>
         <input type = "text" id="q2">
         <div id ="q2Feedback"></div>
         <hr>
-        
+
         <h3><span id ="markImg3"></span>Which statement is used to INSERT data into a Database?</h3>
         <div id="q3Choices"></div>
         <div id ="q3Feedback"></div>
         <hr>
-        
-        <h3><span id ="markImg4"></span>Which of the following is not a MySQL keyword?</h3>   
+
+        <h3><span id ="markImg4"></span>Which of the following is not a MySQL keyword?</h3>
         <input type = "text" id="q4">
         <div id ="q4Feedback"></div>
         <hr>
@@ -40,20 +40,20 @@
         <h3><span id ="markImg5"></span>Which command lets you change one or more fields in a table?</h3>
         <div id="q5Choices"></div>
         <div id ="q5Feedback"></div>
-        
+
         <h3 id="validationFdbk" class="bg-danger text-white"></h3>
         <button class="btn btn-outline-success"> Submit Quiz </button>
         <br><br>
-        
+
         <h2 id="totalScore" class = "text-info"></h2>
-        
+
         <h2 id ="congratulations"></h2>
-        
-    
+
+
         <h3 id="totalAttempts"></h3>
-        
-    
+
+
     </body>
     <%- include('partials/footer.ejs') %>
-    
+
     </html>
