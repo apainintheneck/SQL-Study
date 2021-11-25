@@ -47,24 +47,26 @@ $(document).ready(function(){
         if ($("#q1").val() == "") {
              isValid = false;
              $("#validationFdbk").html("Question 1 was not answered");
-             $("#validationFdbk").attr("class", "alert alert-danger");
         }
         return isValid;
     }
 
    function rightAnswer(index){
+        $(`#q${index}Feedback`).html("Correct!");
+        $(`#q${index}Feedback`).attr("class", "bg-success text-white");
         $(`#markImg${index}`).html("<img src ='/img/checkmark.png'>");
         score += 20;
    }
 
    function wrongAnswer(index){
+        $(`#q${index}Feedback`).html("Incorrect!");
+        $(`#q${index}Feedback`).attr("class", "bg-warning text-white");
         $(`#markImg${index}`).html("<img src ='/img/xmark.png'>");
    }
 
     function gradeQuiz(){
 
         $("#validationFdbk").html("");//resets validation feedback
-        $("#validationFdbk").attr("class", "");
             if(!isFormValid()){
                 return;
             }
