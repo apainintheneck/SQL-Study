@@ -1,7 +1,7 @@
 const express = require("express");
 const pool = require("./dbPool.js");
 const bodyParser = require('body-parser');
-const mysql = require('mysql2'); 
+const mysql = require('mysql2');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const session = require('express-session');
@@ -37,21 +37,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME
-});
-db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('connected to database');
-});
-// global.db = db;
-
 
 //routes
 app.get("/login", function(req, res){
