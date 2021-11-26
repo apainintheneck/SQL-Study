@@ -9,24 +9,25 @@
     <body>
         <%- include('partials/admin-sidebar.ejs') %>
 
-        <main id="content" class="card bg-light mt-5" style="max-width: 40rem;">
+        <main id="content">
+            <div class="mx-auto card bg-light mt-5" style="max-width: 45rem;">
 
-            <div class="card-header">Chapters</div>
-            <div class="card-body">
-                <ul>
-                    <li><a href="/admin/chapters/add">Add a new chapter</a></li>
-                    <li><a href="/admin/chapters/edit">Edit a chapter</a></li>
-                </ul>
+                <div class="card-header">Chapters</div>
+                <div class="card-body">
+                    <ul>
+                        <li><a href="/admin/chapters/add">Add a new chapter</a></li>
+                        <li><a href="/admin/chapters/edit">Edit a chapter</a></li>
+                    </ul>
+                </div>
+
+                <div class="card-header">Pages</div>
+                <div class="card-body">
+                    <ul>
+                        <li><a href="/admin/pages/add">Add a new page</a></li>
+                        <li><a href="/admin/pages/edit">Edit a page</a></li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="card-header">Pages</div>
-            <div class="card-body">
-                <ul>
-                    <li><a href="/admin/pages/add">Add a new page</a></li>
-                    <li><a href="/admin/pages/edit">Edit a page</a></li>
-                </ul>
-            </div>
-
         </main>
 
     </body>
