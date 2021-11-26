@@ -4,7 +4,7 @@
   "description": "A website that teaches people how to use and build relational databases using SQL.",
   "main": "app.js",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.24.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.6",
