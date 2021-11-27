@@ -2,61 +2,68 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title> Chapter 2 Comprehension Quiz </title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">        
-        <link rel="stylesheet" href="css/style.css">
+        <title> Chapter 2 Quiz </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/sidebar.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" ></script> 
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" ></script>
         <script src="/js/quiz2.js"></script>
-        
-        <%- include('partials/head.ejs') %>  
     </head>
-   
-    <body class="text-center" style ="background-color:#081A51; color: white;">
-        
-        <h1 class="jumbotron" style = "color: black;">Chapter 2 Comprehension Quiz</h1>
-        
-        <h3><span id ="markImg1"></span>What kind of statement returns values from a table?</h3>   
-        <input type = "text" id="q1">
-        <div id ="q1Feedback"></div>
-        <hr>
-        
-        <h3><span id ="markImg2"></span>In MySQL, which of these means a cell has no value?</h3>
-        <div id="q2Choices"></div>
-        <div id ="q2Feedback"></div>
-        <hr>
-        
-        <h3><span id ="markImg3"></span>Which of these are proper datatypes?</h3>
-        <input type="checkbox" id="FLOAT"> <label for="FLOAT"> FLOAT </label>&emsp;
-        <input type="checkbox" id="DATE"> <label for="DATE"> DATE </label>&emsp;
-        <input type="checkbox" id="DOLLARS"> <label for="DOLLARS"> DOLLARS </label>&emsp;
-        <input type="checkbox" id="VARCHAR"> <label for="VARCHAR"> VARCHAR </label>
-        
-        <div id ="q3Feedback"></div>
-        <hr>
-        
-        <h3><span id ="markImg4"></span>What will this query return? SELECT * FROM TABLE</h3>
-        <div id="q4Choices"></div>
-        <div id ="q4Feedback"></div>
-        <hr>
 
-        <h3><span id ="markImg5"></span>Which clause can modify a query to search for a given value in a column?</h3>
-        <div id="q5Choices"></div>
-        <div id ="q5Feedback"></div>
-        
-        <h3 id="validationFdbk" class="bg-danger text-white"></h3>
-        <button class="btn btn-outline-success"> Submit Quiz </button>
-        <br><br>
-        
-        <h2 id="totalScore" class = "text-info"></h2>
-        
-        <h2 id ="congratulations"></h2>
-        
-    
-        <h3 id="totalAttempts"></h3>
-        
-    
+    <body>
+
+        <%- include('partials/sidebar.ejs') %>
+
+        <div id="content" class="text-center">
+
+            <h1 class="jumbotron mx-auto" style="color: black; max-width: 60rem;">Chapter 2 Comprehension Quiz</h1>
+
+            <div class="card mx-auto pt-5 pb-5" style="max-width: 60rem; background-color:#081A51; color: white;">
+
+                <h3><span id ="markImg1"></span>What kind of statement returns values from a table?</h3>
+                <input type="text" id="q1" class="w-25 mx-auto">
+                <div id ="q1Feedback"></div>
+                <hr>
+
+                <h3><span id ="markImg2"></span>In MySQL, which of these means a cell has no value?</h3>
+                <div id="q2Choices"></div>
+                <div id ="q2Feedback"></div>
+                <hr>
+
+                <h3><span id ="markImg3"></span>Which of these are proper datatypes?</h3>
+                <span>
+                    <input type="checkbox" id="FLOAT"> <label for="FLOAT"> FLOAT </label>&emsp;
+                    <input type="checkbox" id="DATE"> <label for="DATE"> DATE </label>&emsp;
+                    <input type="checkbox" id="DOLLARS"> <label for="DOLLARS"> DOLLARS </label>&emsp;
+                    <input type="checkbox" id="VARCHAR"> <label for="VARCHAR"> VARCHAR </label>
+                </span>
+
+                <div id ="q3Feedback"></div>
+                <hr>
+
+                <h3><span id ="markImg4"></span>What will this query return? SELECT * FROM TABLE</h3>
+                <div id="q4Choices"></div>
+                <div id ="q4Feedback"></div>
+                <hr>
+
+                <h3><span id ="markImg5"></span>Which clause can modify a query to search for a given value in a column?</h3>
+                <div id="q5Choices"></div>
+                <div id ="q5Feedback"></div>
+
+                <h3 id="validationFdbk" class="bg-danger text-white"></h3>
+                <button class="btn btn-outline-success w-25 mx-auto"> Submit Quiz </button>
+                <br><br>
+
+                <h2 id="totalScore" class = "text-info"></h2>
+
+                <h2 id ="congratulations"></h2>
+
+
+                <h3 id="totalAttempts"></h3>
+
+                <%- include('partials/footer.ejs') %>
+            </div>
+        </div>
     </body>
-    <%- include('partials/footer.ejs') %>
-    
+
     </html>
