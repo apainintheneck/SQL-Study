@@ -38,10 +38,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-//routes
-app.get("/login", function(req, res){
-  res.render("login");
-});
+//middleware function
+const authCheck = (req, res, next) =>{
+    if(!req.user){
+        //if user is not logged in
+        res.redirect("/login");
+    }else{
+        //if logged in 
+        next();
+    }
+};
+
+
 
 //login, registration & authentication routes
 app.post('/login', postLogin);
@@ -56,51 +64,53 @@ app.get('/auth/facebook/callback', handleFacebookLogin);
 app.get('/auth/google', getGoogleLogin);
 app.get('/auth/google/callback', handleGoogleLogin);
 
-  app.get("/dashboard", function(req, res){
-    res.render("dashboard");
-});
-
-app.get("/sandbox", function(req, res){
-    res.render("sandbox");
-});
-
-// app.get('/protected', (req, res) => {
-//     res.send('Hello!');
-// });
-
-app.get("/lecture", function(req, res){
-    res.render("lecture");
-});
-
-app.get("/chapter", function(req, res){
-    res.render("chapter");
+//Unprotected routes
+app.get("/login", function(req, res){
+    res.render("login");
 });
 
 app.get("/", function(req, res){
     res.render("index");
 });// "/"
 
-app.get("/admin", function(req, res){
+//protected routes
+app.get('/dashboard', authCheck, (req, res) => {
+    res.render("dashboard");
+});
+
+app.get('/sandbox', authCheck, (req, res) => {
+    res.render("sandbox");
+});
+
+app.get('/lecture', authCheck, (req, res) => {
+    res.render("lecture");
+});
+
+app.get("/chapter", authCheck, function(req, res){
+    res.render("chapter");
+});
+
+app.get("/admin", authCheck, function(req, res){
     res.render("admin");
 }); // "/admin"
 
-app.get("/admin/chapters/add", function(req, res){
+app.get("/admin/chapters/add", authCheck, function(req, res){
     res.render("addChapter");
 }); // "/admin/chapters/add"
 
-app.get("/admin/pages/add", function(req, res){
+app.get("/admin/pages/add", authCheck, function(req, res){
     res.render("addPage");
 }); // "/admin/pages/add"
 
-app.get("/admin/chapters/edit", function(req, res){
+app.get("/admin/chapters/edit", authCheck, function(req, res){
     res.render("editChapter");
 }); // "/admin/chapters/edit"
 
-app.get("/admin/pages/edit", function(req, res){
+app.get("/admin/pages/edit", authCheck, function(req, res){
     res.render("editPage");
 }); // "/admin/pages/edit"
 
-app.get('/quizzes', function(req , res){
+app.get('/quizzes', authCheck, function(req , res){
     res.render('quizzes');
 });
 
