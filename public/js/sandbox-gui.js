@@ -29,6 +29,7 @@ function error(e) {
 }
 
 function noerror() {
+	errorElm.innerHTML = "";
 	errorElm.style.height = '0';
 }
 
