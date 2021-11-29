@@ -1,61 +1,121 @@
 const express = require("express");
 const pool = require("./dbPool.js");
+const bodyParser = require('body-parser');
+const mysql = require('mysql2');
+const cookieParser = require('cookie-parser');
+const path = require('path');
+const session = require('express-session');
+const passport = require('passport');
+const passportConfig = require('./config/passport')(passport);
+const flash = require('express-flash-messages');
 const app = express();
+
+
+const { getHomePage } = require('./routes/index');
+const { handleLogout, postLogin, getLogin } = require('./routes/login');
+const { getFacebookLogin, handleFacebookLogin } = require('./routes/facebook_login');
+const { getGoogleLogin, handleGoogleLogin } = require('./routes/google_login');
+const { getRegister, submitRegister } = require('./routes/register');
 
 //Used to parse the body of a post request.
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
+app.set('port', process.env.PORT);
+app.set('views', __dirname + '/views');
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true  }));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+    secret: 'keyboard cat',
+    saveUninitialized: true,
+    resave: true
+  }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+//middleware function
+const authCheck = (req, res, next) =>{
+    if(!req.user){
+        //if user is not logged in
+        res.redirect("/login");
+    }else{
+        //if logged in 
+        next();
+    }
+};
 
 
-//routes
+
+//login, registration & authentication routes
+app.post('/login', postLogin);
+app.get('/login', getLogin);
+app.get('/logout', handleLogout);
+
+app.get('/signup', getRegister);
+app.post('/signup', submitRegister);
+
+app.get('/auth/facebook', getFacebookLogin);
+app.get('/auth/facebook/callback', handleFacebookLogin);
+app.get('/auth/google', getGoogleLogin);
+app.get('/auth/google/callback', handleGoogleLogin);
+
+//Unprotected routes
 app.get("/login", function(req, res){
-  res.render("login");
+    res.render("login");
 });
 
-  app.get("/dashboard", function(req, res){
-    res.render("dashboard");
-});
-
-app.get("/sandbox", function(req, res){
-    res.render("sandbox");
-});
-
-app.get("/lecture", function(req, res){
-    res.render("lecture");
-});
-
-app.get("/chapter", function(req, res){
-    res.render("chapter");
+app.get("/logout", function(req, res){
+    req.logOut()
+    res.redirect("/")
 });
 
 app.get("/", function(req, res){
     res.render("index");
 });// "/"
 
-app.get("/admin", function(req, res){
+//protected routes
+app.get('/dashboard', authCheck, (req, res) => {
+    res.render("dashboard");
+});
+
+app.get('/sandbox', authCheck, (req, res) => {
+    res.render("sandbox");
+});
+
+app.get('/lecture', authCheck, (req, res) => {
+    res.render("lecture");
+});
+
+app.get("/chapter", authCheck, function(req, res){
+    res.render("chapter");
+});
+
+app.get("/admin", authCheck, function(req, res){
     res.render("admin");
 }); // "/admin"
 
-app.get("/admin/chapters/add", function(req, res){
+app.get("/admin/chapters/add", authCheck, function(req, res){
     res.render("addChapter");
 }); // "/admin/chapters/add"
 
-app.get("/admin/pages/add", function(req, res){
+app.get("/admin/pages/add", authCheck, function(req, res){
     res.render("addPage");
 }); // "/admin/pages/add"
 
-app.get("/admin/chapters/edit", function(req, res){
+app.get("/admin/chapters/edit", authCheck, function(req, res){
     res.render("editChapter");
 }); // "/admin/chapters/edit"
 
-app.get("/admin/pages/edit", function(req, res){
+app.get("/admin/pages/edit", authCheck, function(req, res){
     res.render("editPage");
 }); // "/admin/pages/edit"
 
-app.get('/quizzes', function(req , res){
+app.get('/quizzes', authCheck, function(req , res){
     res.render('quizzes');
 });
 
