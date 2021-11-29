@@ -1,6 +1,21 @@
 /* global $ */
 /* global fetch */
 $(document).ready(function(){
+      // Create reference instance
+    const marked = window.marked;
+
+    // Set options
+    // `highlight` example uses https://highlightjs.org
+    marked.setOptions({
+    renderer: new marked.Renderer(),
+    pedantic: false,
+    gfm: true,
+    breaks: true,
+    smartLists: true,
+    smartypants: false,
+    xhtml: false
+    });
+
     loadData(getUrlParameter("id"));
     var pages = [];
     var pageInd = 0;
@@ -60,11 +75,11 @@ $(document).ready(function(){
         //Update page nav
         $('#page-nav').html('');
         if(i != 0) {
-            $("#page-nav").append(`<button data-page-nav="${i - 1}" class="btn btn-primary col-sm-2">\< Prev </div>`);
+            $("#page-nav").append(`<button data-page-nav="${i - 1}" class="btn btn-primary">\< Prev </div>`);
         }
-        $("#page-nav").append(`<a href="/lecture" class="btn btn-primary col-sm-2"> Chapters </a>`);
+        $("#page-nav").append(`<a href="/lecture" class="btn btn-primary"> Chapters </a>`);
         if (i < (pages.length - 1)) {
-            $("#page-nav").append(`<button data-page-nav="${i + 1}" class="btn btn-primary col-sm-2"> Next \></div>`);
+            $("#page-nav").append(`<button data-page-nav="${i + 1}" class="btn btn-primary"> Next \></div>`);
         }
         //Add styles to page body elements
         $("#page-body table").addClass('table');
