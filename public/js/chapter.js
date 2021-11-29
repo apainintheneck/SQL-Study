@@ -19,11 +19,11 @@ $(document).ready(function(){
             await loadPages(id);
             displayPage(pageInd);
     }
-    $("#page-body").on("click", "[data-page]", function () {
+    $("#page-nav").on("click", "[data-page]", function () {
         window.location = "/chapter?id="+$(this).attr()
 
     })
-    $("#page-body").on("click", "[data-page-nav]", function () {
+    $("#page-nav").on("click", "[data-page-nav]", function () {
        pageInd = parseInt($(this).attr("data-page-nav"));
        displayPage(pageInd)
 
@@ -51,20 +51,24 @@ $(document).ready(function(){
         pages = data;
     }
     var displayPage = function displayPage(i) {
+        //Update page title
         $('#page-title').html('');
         $("#page-title").append(`<div data-page="${pages[i].id}"> ${pages[i].title} </div>`);
+        //Update page body
         $('#page-body').html('');
-        $("#page-body").append(`<div"> ${marked.parse(pages[i].body)} </div>`);
-        if(i != 0 && i != (pages.length - 1)) {
-            $("#page-body").append(`<div data-page-nav="${i - 1}" class="btn btn-primary"> Prev </div>`);
-            $("#page-body").append(`<div data-page-nav="${i + 1}" class="btn btn-primary" style ="float:right"> Next </div>`);
-        } else if (i == (pages.length - 1)) {
-            $("#page-body").append(`<div data-page-nav="${i - 1}" class="btn btn-primary"> Prev </div>`);
-            $("#page-body").append(`<a href="/lecture" class="btn btn-primary" style ="float:right"> Return to Table of Contents </a>`);
-        } else {
-            $("#page-body").append(`<div data-page-nav="${i + 1}" class="btn btn-primary" style = "float: right"> Next </div>`);
+        $("#page-body").append(`<div"> ${marked.parse(pages[i].body)} </div><hr>`);
+        //Update page nav
+        $('#page-nav').html('');
+        if(i != 0) {
+            $("#page-nav").append(`<button data-page-nav="${i - 1}" class="btn btn-primary col-sm-2">\< Prev </div>`);
         }
-
+        $("#page-nav").append(`<a href="/lecture" class="btn btn-primary col-sm-2"> Chapters </a>`);
+        if (i < (pages.length - 1)) {
+            $("#page-nav").append(`<button data-page-nav="${i + 1}" class="btn btn-primary col-sm-2"> Next \></div>`);
+        }
+        //Add styles to page body elements
+        $("#page-body table").addClass('table');
+        $("#page-body img").addClass('img-fluid');
     }
 
 });//JQuery Ready function
