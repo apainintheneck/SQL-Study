@@ -65,16 +65,6 @@ $(document).ready(function(){
         }
     }
 
-     //function checks for data in fill in the blank sections
-    function isFormValid(){
-        let isValid = true;
-        if ($("#q2").val() == "") {
-             isValid = false;
-             $("#validationFdbk").html("Question 4 was not answered");
-        }
-        return isValid;
-    }
-
    function rightAnswer(index){
         $(`#q${index}Feedback`).html("Correct!");
         $(`#q${index}Feedback`).attr("class", "bg-success text-white");
@@ -89,16 +79,11 @@ $(document).ready(function(){
    }
 
     function gradeQuiz(){
-
-        $("#validationFdbk").html("");//resets validation feedback
-            if(!isFormValid()){
-                return;
-            }
         //variables
         score = 0;
 
         let q1Response = $("input[name=q1]:checked").val();
-        let q2Response = $("#q2").val().toLowerCase();
+        let q2Response = $("input[name=q2]:checked").val();
         let q3Response = $("input[name=q3]:checked").val();
         let q4Response = $("input[name=q4]:checked").val();
         let q5Response = $("input[name=q5]:checked").val();
