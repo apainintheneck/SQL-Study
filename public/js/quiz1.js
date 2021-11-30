@@ -112,7 +112,7 @@ $(document).ready(function(){
         }
 
         //Question 4
-        if(q4Response == "relational"){
+        if(q4Response == "foreign"){
             rightAnswer(4);
         }else{
             wrongAnswer(4);
