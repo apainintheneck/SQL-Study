@@ -2,24 +2,44 @@
 <html>
   <head>
     <%- include('partials/head.ejs') %>
-    <link href="/css/styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link href="/css/sidebar.css" rel="stylesheet"/>
     <script src="/js/chapter.js"></script>
+    <style>
+        #page-nav button, #page-nav a {
+            margin-left: 2%; margin-right: 2%; width: 7rem;
+        }
+        #page-body H1,  #page-body H2,  #page-body H3,  #page-body H4,  #page-body H5,  #page-body H6 {
+            text-align: center;
+        }
+        #page-body H1,  #page-body H2,  #page-body H3,  #page-body H4 {
+            text-decoration: underline;
+        }
+    </style>
   </head>
 
 <body>
   <%- include('partials/sidebar.ejs') %>
         <!-- Page content holder -->
-  <div class="page-content p-5" id="content">
-    <!-- Toggle button -->
-    <!-- <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button> -->
-    <div class="separator"></div>
-    <div class="row text-white">
-      <div class="col-lg-7">
-        <div class="bg-white p-5 rounded my-5 shadow-sm" id = "chapter-title" style="color:black">
+  <main id="content">
+    <div class="mx-auto mb-5" style="max-width: 45rem;text-decoration: None;">
 
+      <div class="card border-secondary">
+        <img src="img/db-graphic.jpg" class="card-img-top" alt="background image which shows a cloud and a database">
+        <div class="card-body text-center">
+          <h5 id="page-title" class="card-title"></h5>
         </div>
       </div>
+
+      <div class="card border-primary mt-4">
+        <div class="card-body">
+          <p id="page-body" class="card-text"></p>
+          <div id="page-nav" class="text-center"></div>
+        </div>
+      </div>
+
     </div>
-  </div>
+
+  </main>
 </body>
 </html>
