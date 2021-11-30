@@ -10,7 +10,7 @@ module.exports = {
       userData: [],
     });
   },
-  
+
   submitRegister: [
     [
       check("username").isLength({ min: 2 }).withMessage("Username must be at least 2 chars long."),
@@ -49,7 +49,7 @@ module.exports = {
         registration_type: "email",
         password: hash,
       });
-      console.log("created user is " + user.name);           
+      // console.log("created user is " + user.name); //Testing           
       passport.authenticate("local", function (err, user, info) {
         if (err) {
           return next(err);

@@ -48,14 +48,14 @@ module.exports = function (passport) {
         session: true,
       },
       async function (username, password, done) {
-        console.log(`trying to log in as ${username}`);
+        // console.log(`trying to log in as ${username}`); //Testing
         const user = await User.findOne({ where: { email: username } });
         if (!user) {
           return done(null, false);
         }
         bcrypt.compare(password, user.password, function (err, res) {
           if (res) {
-            console.log("successful login");
+            // console.log("successful login"); //Testing
             return done(null, user);
           } else {
             return done(null, false);
