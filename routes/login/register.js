@@ -1,6 +1,6 @@
 const { body, check, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
-const User = require("../models/index")["User"];
+const User = require("../../models/index")["User"];
 const passport = require("passport");
 
 module.exports = {
@@ -49,7 +49,7 @@ module.exports = {
         registration_type: "email",
         password: hash,
       });
-      // console.log("created user is " + user.name); //Testing           
+      // console.log("created user is " + user.name); //Testing
       passport.authenticate("local", function (err, user, info) {
         if (err) {
           return next(err);
