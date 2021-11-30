@@ -1,17 +1,13 @@
 const express = require("express");
 const pool = require("./dbPool.js");
-const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const cookieParser = require('cookie-parser');
-const path = require('path');
 const session = require('express-session');
 const passport = require('passport');
 const passportConfig = require('./config/passport')(passport);
 const flash = require('express-flash-messages');
 const app = express();
 
-
-const { getHomePage } = require('./routes/index');
 const { handleLogout, postLogin, getLogin } = require('./routes/login');
 const { getFacebookLogin, handleFacebookLogin } = require('./routes/facebook_login');
 const { getGoogleLogin, handleGoogleLogin } = require('./routes/google_login');
@@ -21,14 +17,9 @@ const { getRegister, submitRegister } = require('./routes/register');
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
-app.set('port', process.env.PORT);
-app.set('views', __dirname + '/views');
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true  }));
-app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'keyboard cat',
     saveUninitialized: true,
@@ -44,12 +35,10 @@ const authCheck = (req, res, next) =>{
         //if user is not logged in
         res.redirect("/login");
     }else{
-        //if logged in 
+        //if logged in
         next();
     }
 };
-
-
 
 //login, registration & authentication routes
 app.post('/login', postLogin);
