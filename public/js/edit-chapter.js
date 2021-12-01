@@ -5,7 +5,7 @@ $(document).ready(function(){
     loadData(); //Load chapter info into chapter dropdown
 
     async function loadData() {
-        let url = "/chapters?action=all";
+        let url = "/api/chapters?action=all";
         let response = await fetch(url);
         chapters = await response.json();
         // console.log(data); //For testing purposes only

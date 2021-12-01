@@ -24,7 +24,7 @@ $(document).ready(function(){
         pageInd = getUrlParameter("pageInd");
     }
     async function loadData() {
-        let url = "/chapters?action=single&id="+chapterId;
+        let url = "/api/chapters?action=single&id="+chapterId;
         let response = await fetch(url);
         let data = await response.json();
         //console.log(data); //For testing purposes only
@@ -58,7 +58,7 @@ $(document).ready(function(){
         return false;
     };
     async function loadPages() {
-        let url = "/pages?action=chapter&id="+chapterId;
+        let url = "/api/pages?action=chapter&id="+chapterId;
         let response = await fetch(url);
         let data = await response.json();
         console.log(data); //For testing purposes only
@@ -85,7 +85,7 @@ $(document).ready(function(){
         $("#page-body img").addClass('img-fluid');
 
         //Send visited information to database
-        await fetch(`/pages?action=visit&chapterId=${chapterId}&pageInd=${pageInd}`);
+        await fetch(`/api/pages?action=visit&chapterId=${chapterId}&pageInd=${pageInd}`);
     }
 
 });//JQuery Ready function

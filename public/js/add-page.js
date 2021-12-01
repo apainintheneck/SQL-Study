@@ -4,7 +4,7 @@ $(document).ready(function(){
     loadData();
 
     async function loadData() {
-        let url = "/chapters?action=titles";
+        let url = "/api/chapters?action=titles";
         let response = await fetch(url);
         let data = await response.json();
         // console.log(data); //For testing purposes only
