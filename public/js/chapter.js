@@ -16,23 +16,22 @@ $(document).ready(function(){
     xhtml: false
     });
 
-    loadData(getUrlParameter("id"));
+    const chapterId = getUrlParameter("id")
+    loadData(chapterId);
     var pages = [];
     var pageInd = 0;
     if(getUrlParameter("pageInd")) {
         pageInd = getUrlParameter("pageInd");
     }
-    async function loadData(id) {
-        let url = "/chapters?action=single&id="+id;
+    async function loadData() {
+        let url = "/chapters?action=single&id="+chapterId;
         let response = await fetch(url);
         let data = await response.json();
         //console.log(data); //For testing purposes only
 
         //Display dropdown menu of chapters.
-
-
-            await loadPages(id);
-            displayPage(pageInd);
+        await loadPages();
+        displayPage();
     }
     $("#page-nav").on("click", "[data-page]", function () {
         window.location = "/chapter?id="+$(this).attr()
@@ -40,7 +39,7 @@ $(document).ready(function(){
     })
     $("#page-nav").on("click", "[data-page-nav]", function () {
        pageInd = parseInt($(this).attr("data-page-nav"));
-       displayPage(pageInd)
+       displayPage()
 
     })
     function getUrlParameter(sParam) {
@@ -58,32 +57,35 @@ $(document).ready(function(){
         }
         return false;
     };
-    async function loadPages(id, displayPage) {
-        let url = "/pages?action=chapter&id="+id;
+    async function loadPages() {
+        let url = "/pages?action=chapter&id="+chapterId;
         let response = await fetch(url);
         let data = await response.json();
-        //console.log(data); //For testing purposes only
+        console.log(data); //For testing purposes only
         pages = data;
     }
-    var displayPage = function displayPage(i) {
+    async function displayPage() {
         //Update page title
         $('#page-title').html('');
-        $("#page-title").append(`<div data-page="${pages[i].id}"> ${pages[i].title} </div>`);
+        $("#page-title").append(`<div data-page="${pages[pageInd].id}"> ${pages[pageInd].title} </div>`);
         //Update page body
         $('#page-body').html('');
-        $("#page-body").append(`<div"> ${marked.parse(pages[i].body)} </div><hr>`);
+        $("#page-body").append(`<div"> ${marked.parse(pages[pageInd].body)} </div><hr>`);
         //Update page nav
         $('#page-nav').html('');
-        if(i != 0) {
-            $("#page-nav").append(`<button data-page-nav="${i - 1}" class="btn btn-primary">\< Prev </div>`);
+        if(pageInd != 0) {
+            $("#page-nav").append(`<button data-page-nav="${pageInd - 1}" class="btn btn-primary">\< Prev </div>`);
         }
         $("#page-nav").append(`<a href="/lecture" class="btn btn-primary"> Chapters </a>`);
-        if (i < (pages.length - 1)) {
-            $("#page-nav").append(`<button data-page-nav="${i + 1}" class="btn btn-primary"> Next \></div>`);
+        if (pageInd < (pages.length - 1)) {
+            $("#page-nav").append(`<button data-page-nav="${pageInd + 1}" class="btn btn-primary"> Next \></div>`);
         }
         //Add styles to page body elements
         $("#page-body table").addClass('table');
         $("#page-body img").addClass('img-fluid');
+
+        //Send visited information to database
+        await fetch(`/pages?action=visit&chapterId=${chapterId}&pageInd=${pageInd}`);
     }
 
 });//JQuery Ready function

@@ -65,6 +65,9 @@ module.exports = (app) => {
                               ORDER BY ch.id, p.id
                               `;
                               break;
+            case "visit":     sql = `UPDATE users SET lastVisited = ? WHERE id = ?`;
+                              sqlParams.push(`/chapter?id=${req.query.chapterId}&pageInd=${req.query.pageInd}`, req.session.passport.user.id);
+                              break;
             default:          res.status(400).send('Invalid API action');
                               return;
         }

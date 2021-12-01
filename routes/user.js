@@ -1,3 +1,5 @@
+const pool = require("../config/dbPool.js");
+
 module.exports = (app) => {
     //middleware function
     const userAuth = (req, res, next) =>{
@@ -12,8 +14,16 @@ module.exports = (app) => {
 
     //protected routes
     app.get('/dashboard', userAuth, (req, res) => {
-        res.render("dashboard", { username : req.session.passport.user.name,
-                               lastArticle : "/chapter?id=1&pageInd=2"});
+        //Get last visited page from database and send that info to dashboard.ejs template.
+        let sql = "SELECT lastVisited FROM users WHERE id = ?";
+        let sqlParams = [req.session.passport.user.id];
+
+        pool.query(sql, sqlParams, function(err, rows, fields) {
+            if (err) console.log(err);
+            // console.log(rows); //testing
+            res.render("dashboard", { username : req.session.passport.user.name,
+                                   lastVisited : rows.length > 0 ? rows[0].lastVisited : null});
+        });
     });
 
     app.get('/sandbox', userAuth, (req, res) => {
