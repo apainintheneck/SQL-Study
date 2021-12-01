@@ -12,7 +12,8 @@ module.exports = (app) => {
 
     //protected routes
     app.get('/dashboard', userAuth, (req, res) => {
-        res.render("dashboard");
+        res.render("dashboard", { username : req.session.passport.user.name,
+                               lastArticle : "/chapter?id=1&pageInd=2"});
     });
 
     app.get('/sandbox', userAuth, (req, res) => {
