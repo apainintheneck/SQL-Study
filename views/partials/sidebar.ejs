@@ -23,6 +23,13 @@
                 Dashboard
             </a>
     </li>
+    <% if (typeof admin != 'undefined' && admin) { %>
+    <li class="nav-item">
+      <a href="/admin" class="nav-link active">
+                Admin
+            </a>
+    </li>
+    <% } %>
     <hr style = "color: white">
     <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0" style ="color:#f0f8ff;text-align:left;">Workspace</p>
 
