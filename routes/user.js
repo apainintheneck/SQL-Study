@@ -1,3 +1,11 @@
+/*
+Note: All user routes that have a sidebar (which should be most of them)
+need to pass the req.admin variable as admin to the template. This is used in sidebar.ejs
+template to decide whether or not to display the link to the admin section.
+
+Ex. {admin : req.admin}
+*/
+
 module.exports = (app) => {
     //middleware function
     const userAuth = (req, res, next) =>{

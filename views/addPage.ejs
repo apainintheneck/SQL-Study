@@ -31,7 +31,7 @@
 
                         <div class="form-group">
                             <h5><label for="title">Title</label></h5>
-                            <input type="text" class="form-control" name="title" maxlength="45" required>
+                            <input id="title" type="text" class="form-control" name="title" maxlength="45" required disabled>
                             <small id="titleHelp" class="form-text text-muted">Maximum 45 characters.</small>
                         </div>
 
@@ -39,7 +39,7 @@
 
                         <div class="form-group">
                             <h5><label for="body">Body</label></h5>
-                            <textarea id="body" name="body"></textarea>
+                            <textarea id="body" class="form-control" name="body" rows="5" disabled></textarea>
                         </div>
 
                         <br>
@@ -53,10 +53,6 @@
                 </div>
             </div>
         </main>
-
-        <script>
-            var simplemde = new SimpleMDE();
-        </script>
 
     </body>
 
