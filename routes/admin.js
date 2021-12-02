@@ -6,7 +6,10 @@ module.exports = (app) => {
         if(!req.user){
             //if user is not logged in
             res.redirect("/login");
-        }else{
+        }else if(!req.session.passport.user.admin){
+            //If user is not admin
+            res.redirect("/dashboard");
+        } else {
             //if logged in
             next();
         }
@@ -33,7 +36,7 @@ module.exports = (app) => {
     }); // "/admin/pages/edit"
 
     //Receives post form request
-    app.post("/admin/chapters/add", function(req, res){
+    app.post("/admin/chapters/add", adminAuth, function(req, res){
         let sql = "INSERT INTO chapters (title, description) VALUES (?,?)";
         let sqlParams = [req.body.title, req.body.description];
 
@@ -45,7 +48,7 @@ module.exports = (app) => {
     }); // "/admin/chapters/add"
 
     //Receives post form request
-    app.post("/admin/chapters/edit", function(req, res){
+    app.post("/admin/chapters/edit", adminAuth, function(req, res){
         let sql = "UPDATE chapters SET title = ?, description = ? WHERE id = ?";
         let sqlParams = [req.body.title, req.body.description, req.body.chapter];
 
@@ -58,7 +61,7 @@ module.exports = (app) => {
 
 
     //Receives post form request
-    app.post("/admin/pages/add", function(req, res){
+    app.post("/admin/pages/add", adminAuth, function(req, res){
        let sql = "INSERT INTO pages (chapter_id, title, body) VALUES (?,?,?)";
        let sqlParams = [req.body.chapter, req.body.title, req.body.body];
 
@@ -70,7 +73,7 @@ module.exports = (app) => {
     }); // "/admin/pages/add"
 
     //Receives post form request
-    app.post("/admin/pages/edit", function(req, res){
+    app.post("/admin/pages/edit", adminAuth, function(req, res){
         let sql = "UPDATE pages SET title = ?, body = ? WHERE id = ?";
         let sqlParams = [req.body.title, req.body.body, req.body.page];
 

@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       registration_type: DataTypes.ENUM("email", "google", "facebook"),
       social_user_id: DataTypes.STRING(30),
       password: DataTypes.STRING(80),
+      admin: DataTypes.BOOLEAN
     },
     {
       sequelize,
