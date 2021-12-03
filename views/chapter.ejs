@@ -28,6 +28,13 @@
         <img src="img/db-graphic.jpg" class="card-img-top" alt="background image which shows a cloud and a database">
         <div class="card-body text-center">
           <h5 id="page-title" class="card-title"></h5>
+
+          <% if(admin) { %>
+          <br>
+          <div class="alert alert-primary" role="alert">
+          Hi admin! <a href="/admin/pages/edit" class="alert-link">Click here to edit a page</a>.
+          </div>
+          <% } %>
         </div>
       </div>
 

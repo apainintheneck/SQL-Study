@@ -43,7 +43,7 @@ module.exports = (app) => {
         pool.query(sql, sqlParams, function(err, rows, fields) {
             if (err) console.log(err);
             // console.log(rows); //testing
-            res.render("admin");
+            res.render("addChapter", {added : true});
         });
     }); // "/admin/chapters/add"
 
@@ -55,7 +55,7 @@ module.exports = (app) => {
         pool.query(sql, sqlParams, function(err, rows, fields) {
             if (err) console.log(err);
             // console.log(rows); //testing
-            res.render("admin");
+            res.render("editChapter", {updated : true});
         });
     }); // "/admin/chapters/edit"
 
@@ -66,9 +66,13 @@ module.exports = (app) => {
        let sqlParams = [req.body.chapter, req.body.title, req.body.body];
 
        pool.query(sql, sqlParams, function(err, rows, fields) {
-            if (err) console.log(err);
-            // console.log(rows); //testing
-            res.render("admin");
+          console.log(rows); //testing
+           if (err){
+               console.log(err);
+               res.render("addPage");
+           } else {
+               res.render("addPage", {link : `/chapter?id=${req.body.chapter}`});
+           }
        });
     }); // "/admin/pages/add"
 
@@ -78,9 +82,13 @@ module.exports = (app) => {
         let sqlParams = [req.body.title, req.body.body, req.body.page];
 
         pool.query(sql, sqlParams, function(err, rows, fields) {
-            if (err) console.log(err);
             // console.log(rows); //testing
-            res.render("admin");
+            if (err){
+                console.log(err);
+                res.render("editPage");
+            } else {
+                res.render("editPage", {link : `/chapter?id=${req.body.chapter}`});
+            }
         });
     }); // "/admin/pages/edit"
 };

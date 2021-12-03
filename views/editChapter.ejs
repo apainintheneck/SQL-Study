@@ -19,10 +19,16 @@
 
                     <hr>
 
+                    <% if(typeof updated != 'undefined' && updated) { %>
+                    <div class="alert alert-primary" role="alert">
+                    Chapter updated successfully! <a href="/lecture" class="alert-link">Click here to see it in action</a>.
+                    </div>
+                    <% } %>
+
                     <form method="POST">
 
                         <div class="form-group">
-                            <h5><b>Chapter:</b> <select id="chapter" name="chapter" required></select></h5>
+                            <h5>Chapter: <select id="chapter" name="chapter" required></select></h5>
                         </div>
 
                         <br>

@@ -18,6 +18,12 @@
 
                     <hr>
 
+                    <% if(typeof added != 'undefined' && added) { %>
+                    <div class="alert alert-primary" role="alert">
+                    Chapter added successfully! <a href="/lecture" class="alert-link">Click here to see it in action</a>.
+                    </div>
+                    <% } %>
+
                     <form method="POST">
 
                         <div class="form-group">
