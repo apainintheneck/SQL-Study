@@ -1,13 +1,18 @@
 <!-- Vertical navbar -->
 <!-- Requires imports.ejs and sidebar.css to be added to head tag. -->
 <!-- Make sure to wrap your content in a div/main tag with the id="content" -->
+<!-- Note: All routes that use this sidebar (which should be most user routes)
+need to pass the req.admin variable as admin to the template. This is used in sidebar.ejs
+template to decide whether or not to display the link to the admin section.
+
+Ex. {admin : req.admin} -->
 
 <div class="vertical-nav text-center" id="sidebar" style ="background-color: #081A51;">
   <div class="py-4 px-3 mb-4 ">
     <div class="media d-flex align-items-center" id="nav-title">
       <img src="/img/database.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
       <div class="media-body">
-        <h4 class="m-0" style = "color:white; padding-left:15px;">Jason Doe</h4>
+        <h4 class="m-0" style = "color:white; padding-left:15px;">SQL Study</h4>
         <p class="font-weight-light text-light mb-0">Student</p>
       </div>
     </div>
@@ -23,6 +28,14 @@
                 Dashboard
             </a>
     </li>
+    <!-- Display admin link if user is an admin. -->
+    <% if (admin) { %>
+    <li class="nav-item">
+      <a href="/admin" class="nav-link active">
+                Admin
+            </a>
+    </li>
+    <% } %>
     <hr style = "color: white">
     <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0" style ="color:#f0f8ff;text-align:left;">Workspace</p>
 
