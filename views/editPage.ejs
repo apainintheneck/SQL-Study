@@ -21,16 +21,22 @@
 
                     <hr>
 
+                    <% if(typeof link != 'undefined' && link) { %>
+                    <div class="alert alert-primary" role="alert">
+                    Page updated successfully! <a href="<%=link%>" class="alert-link">Click here to go to the chapter</a>.
+                    </div>
+                    <% } %>
+
                     <form method="POST">
 
                         <div class="form-group">
-                            <h5><b>Chapter:</b> <select id="chapter" name="chapter" required></select></h5>
+                            <h5>Chapter: <select id="chapter" name="chapter" required></select></h5>
                         </div>
 
                         <br>
 
                         <div class="form-group">
-                            <h5><b>Page:</b> <select id="page" name="page" required></select></h5>
+                            <h5>Page: <select id="page" name="page" required></select></h5>
                         </div>
 
                         <br>
