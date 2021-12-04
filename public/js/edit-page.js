@@ -6,7 +6,7 @@ $(document).ready(function(){
     loadChapterTitles();
 
     async function loadChapterTitles() {
-        let url = "/pages?action=titles";
+        let url = "/api/pages?action=titles";
         let response = await fetch(url);
         let data = await response.json();
         // console.log(data); //For testing purposes only
@@ -49,7 +49,7 @@ $(document).ready(function(){
 
     //Load page from API into page and make new SimpleMDE object to build the markdown editor
     async function loadPage(page_id) {
-        let url = `/pages?action=page&id=${page_id}`;
+        let url = `/api/pages?action=page&id=${page_id}`;
         let response = await fetch(url);
         let data = await response.json();
         // console.log(data); //For testing purposes only

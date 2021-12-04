@@ -1,3 +1,5 @@
+const pool = require("../config/dbPool.js");
+
 /*
 Note: All user routes that have a sidebar (which should be most of them)
 need to pass the req.admin variable as admin to the template. This is used in sidebar.ejs
@@ -21,7 +23,16 @@ module.exports = (app) => {
 
     //protected routes
     app.get('/dashboard', userAuth, (req, res) => {
-        res.render("dashboard", {admin : req.admin});
+        //Get last visited page from database and send that info to dashboard.ejs template.
+        let sql = "SELECT lastVisited FROM users WHERE id = ?";
+        let sqlParams = [req.session.passport.user.id];
+
+        pool.query(sql, sqlParams, function(err, rows, fields) {
+            if (err) console.log(err);
+            // console.log(rows); //testing
+            res.render("dashboard", { username : req.session.passport.user.name, admin : req.admin,
+                                   lastVisited : rows.length > 0 ? rows[0].lastVisited : null});
+        });
     });
 
     app.get('/sandbox', userAuth, (req, res) => {
