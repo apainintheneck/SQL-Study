@@ -1,7 +1,6 @@
 $(document).ready(function(){
     //global variables
     var score = 0;
-    var attempts = localStorage.getItem("total_attempts");
 
     displayQ1Choices();
 
@@ -63,18 +62,14 @@ $(document).ready(function(){
         }
     }
 
-   function rightAnswer(index){
-        $(`#q${index}Feedback`).html("Correct!");
-        $(`#q${index}Feedback`).attr("class", "bg-success text-white");
-        $(`#markImg${index}`).html("<img src ='/img/checkmark.png'>");
-        score += 20;
-   }
+    function rightAnswer(index){
+         $(`#q${index}Feedback`).html(`<span class="badge bg-success w-25 m-3">Correct!</span>`);
+         score += 20;
+    }
 
-   function wrongAnswer(index){
-        $(`#q${index}Feedback`).html("Incorrect!");
-        $(`#q${index}Feedback`).attr("class", "bg-warning text-white");
-        $(`#markImg${index}`).html("<img src ='/img/xmark.png'>");
-   }
+    function wrongAnswer(index){
+         $(`#q${index}Feedback`).html(`<span class="badge bg-danger w-25 m-3">Incorrect!</span>`);
+    }
 
    //Grade quiz
     $("form").on("submit", e => {
@@ -134,9 +129,6 @@ $(document).ready(function(){
             $("#totalScore").html("Your final score is: " + score).attr("class", "incorrect");
             $("#congratulations").html("Better luck next time...").attr("class", "incorrect");
         }
-        $("#totalAttempts").html(`Total Attempts: ${++attempts}`);
-        localStorage.setItem("total_attempts", attempts);
-
 
       });
 

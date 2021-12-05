@@ -23,41 +23,39 @@
 
       <div class="card mx-auto pt-5 pb-5 mb-5 text-center" style="background-color:#081A51; color: white;">
         <form>
-          <h4><span id ="markImg1"></span>What is the default type of join?</h4>
+          <h4>What is the default type of join?</h4>
           <div id="q1Choices"></div>
-          <div id ="q1Feedback"></div>
+          <h4 id ="q1Feedback"></h4>
           <hr>
 
-          <h4><span id ="markImg2"></span>What keyword is used to connect columns?</h4>
+          <h4>What keyword is used to connect columns?</h4>
           <input type="text" id="q2" class="w-25 mx-auto" required>
-          <div id ="q2Feedback"></div>
+          <h4 id ="q2Feedback"></h4>
           <hr>
 
-          <h4><span id ="markImg3"></span>When filtering a joined table does the WHERE
+          <h4>When filtering a joined table does the WHERE
              go before or after the JOIN?</h4>
           <div id="q3Choices"></div>
-          <div id ="q3Feedback"></div>
+          <h4 id ="q3Feedback"></h4>
           <hr>
 
-          <h4><span id ="markImg4"></span>What keyword is used to create an alias of a column or table?</h4>
+          <h4>What keyword is used to create an alias of a column or table?</h4>
           <input type="text" id="q4" class="w-25 mx-auto" required>
-          <div id ="q4Feedback"></div>
+          <h4 id ="q4Feedback"></h4>
           <hr>
 
-          <h4><span id ="markImg5"></span>Which join clause returns all of the data from both tables?</h4>
+          <h4>Which join clause returns all of the data from both tables?</h4>
           <div id="q5Choices"></div>
-          <div id ="q5Feedback"></div>
+          <h4 id ="q5Feedback"></h4>
 
-          <button type="submit" class="btn btn-outline-success w-25 mx-auto"> Submit Quiz </button>
+          <hr>
+          <button type="submit" class="btn btn-primary w-25 mx-auto"><b> Submit Quiz </b></button>
         </form>
         <br><br>
 
         <h4 id="totalScore" class = "text-info"></h4>
 
         <h4 id ="congratulations"></h4>
-
-
-        <h4 id="totalAttempts"></h4>
 
         <%- include('partials/footer.ejs') %>
       </div>

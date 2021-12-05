@@ -23,17 +23,17 @@
 
       <div class="card mx-auto pt-5 pb-5 mb-5 text-center" style="background-color:#081A51; color: white;">
         <form>
-          <h4><span id ="markImg1"></span>What kind of statement returns values from a table?</h4>
+          <h4>What kind of statement returns values from a table?</h4>
           <input type="text" id="q1" class="w-25 mx-auto" required>
-          <div id ="q1Feedback"></div>
+          <h4 id ="q1Feedback"></h4>
           <hr>
 
-          <h4><span id ="markImg2"></span>In MySQL, which of these means a cell has no value?</h4>
+          <h4>In MySQL, which of these means a cell has no value?</h4>
           <div id="q2Choices"></div>
-          <div id ="q2Feedback"></div>
+          <h4 id ="q2Feedback"></h4>
           <hr>
 
-          <h4><span id ="markImg3"></span>Which of these are proper datatypes?</h4>
+          <h4>Which of these are proper datatypes?</h4>
           <span>
             <input type="checkbox" id="FLOAT"> <label for="FLOAT"> FLOAT </label>&emsp;
             <input type="checkbox" id="DATE"> <label for="DATE"> DATE </label>&emsp;
@@ -41,28 +41,26 @@
             <input type="checkbox" id="VARCHAR"> <label for="VARCHAR"> VARCHAR </label>
           </span>
 
-          <div id ="q3Feedback"></div>
+          <h4 id ="q3Feedback"></h4>
           <hr>
 
-          <h4><span id ="markImg4"></span>What will this query return? SELECT * FROM TABLE</h4>
+          <h4>What will this query return? SELECT * FROM TABLE</h4>
           <div id="q4Choices"></div>
-          <div id ="q4Feedback"></div>
+          <h4 id ="q4Feedback"></h4>
           <hr>
 
-          <h4><span id ="markImg5"></span>Which clause can modify a query to search for a given value in a column?</h4>
+          <h4>Which clause can modify a query to search for a given value in a column?</h4>
           <div id="q5Choices"></div>
-          <div id ="q5Feedback"></div>
+          <h4 id ="q5Feedback"></h4>
 
-          <button type="submit" class="btn btn-outline-success w-25 mx-auto"> Submit Quiz </button>
+          <hr>
+          <button type="submit" class="btn btn-primary w-25 mx-auto"><b> Submit Quiz </b></button>
         </form>
         <br><br>
 
         <h4 id="totalScore" class = "text-info"></h4>
 
         <h4 id ="congratulations"></h4>
-
-
-        <h4 id="totalAttempts"></h4>
 
         <%- include('partials/footer.ejs') %>
       </div>

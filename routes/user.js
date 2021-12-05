@@ -51,7 +51,7 @@ module.exports = (app) => {
         res.render('quizzes', {admin : req.admin});
     });
 
-    app.get('/quizzes/:id', function(req , res){
+    app.get('/quizzes/:id', userAuth, function(req , res){
         res.render('quiz' + req.params.id, {admin : req.admin});
     });
 };
