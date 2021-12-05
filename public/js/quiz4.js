@@ -2,8 +2,6 @@ $(document).ready(function(){
     //global variables
     var score = 0;
     var attempts = localStorage.getItem("total_attempts");
-     //event listeners
-    $("button").on("click", gradeQuiz);
 
     displayQ1Choices();
 
@@ -78,8 +76,9 @@ $(document).ready(function(){
         $(`#markImg${index}`).html("<img src ='/img/xmark.png'>");
    }
 
-    function gradeQuiz(){
-        //variables
+   //Grade quiz
+    $("form").on("submit", e => {
+        e.preventDefault();
         score = 0;
 
         let q1Response = $("input[name=q1]:checked").val();
@@ -139,6 +138,6 @@ $(document).ready(function(){
         localStorage.setItem("total_attempts", attempts);
 
 
-        }
+      });
 
 })

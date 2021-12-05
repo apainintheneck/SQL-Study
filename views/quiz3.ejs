@@ -22,33 +22,34 @@
       </div>
 
       <div class="card mx-auto pt-5 pb-5 mb-5 text-center" style="background-color:#081A51; color: white;">
-        <h4><span id ="markImg1"></span>What is the default type of join?</h4>
-        <div id="q1Choices"></div>
-        <div id ="q1Feedback"></div>
-        <hr>
+        <form>
+          <h4><span id ="markImg1"></span>What is the default type of join?</h4>
+          <div id="q1Choices"></div>
+          <div id ="q1Feedback"></div>
+          <hr>
 
-        <h4><span id ="markImg2"></span>What keyword is used to connect columns?</h4>
-        <input type="text" id="q2" class="w-25 mx-auto">
-        <div id ="q2Feedback"></div>
-        <hr>
+          <h4><span id ="markImg2"></span>What keyword is used to connect columns?</h4>
+          <input type="text" id="q2" class="w-25 mx-auto" required>
+          <div id ="q2Feedback"></div>
+          <hr>
 
-        <h4><span id ="markImg3"></span>When filtering a joined table does the WHERE
-           go before or after the JOIN?</h4>
-        <div id="q3Choices"></div>
-        <div id ="q3Feedback"></div>
-        <hr>
+          <h4><span id ="markImg3"></span>When filtering a joined table does the WHERE
+             go before or after the JOIN?</h4>
+          <div id="q3Choices"></div>
+          <div id ="q3Feedback"></div>
+          <hr>
 
-        <h4><span id ="markImg4"></span>What keyword is used to create an alias of a column or table?</h4>
-        <input type="text" id="q4" class="w-25 mx-auto">
-        <div id ="q4Feedback"></div>
-        <hr>
+          <h4><span id ="markImg4"></span>What keyword is used to create an alias of a column or table?</h4>
+          <input type="text" id="q4" class="w-25 mx-auto" required>
+          <div id ="q4Feedback"></div>
+          <hr>
 
-        <h4><span id ="markImg5"></span>Which join clause returns all of the data from both tables?</h4>
-        <div id="q5Choices"></div>
-        <div id ="q5Feedback"></div>
+          <h4><span id ="markImg5"></span>Which join clause returns all of the data from both tables?</h4>
+          <div id="q5Choices"></div>
+          <div id ="q5Feedback"></div>
 
-        <h4 id="validationFdbk" class="bg-danger text-white"></h4>
-        <button class="btn btn-outline-success w-25 mx-auto"> Submit Quiz </button>
+          <button type="submit" class="btn btn-outline-success w-25 mx-auto"> Submit Quiz </button>
+        </form>
         <br><br>
 
         <h4 id="totalScore" class = "text-info"></h4>

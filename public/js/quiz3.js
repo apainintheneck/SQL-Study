@@ -2,8 +2,6 @@ $(document).ready(function(){
     //global variables
     var score = 0;
     var attempts = localStorage.getItem("total_attempts");
-     //event listeners
-    $("button").on("click", gradeQuiz);
 
     displayQ1Choices();
 
@@ -40,21 +38,6 @@ $(document).ready(function(){
         }
     }
 
-     //functions
-    function isFormValid(){
-        let isValid = true;
-        if ($("#q2").val() == "") {
-             isValid = false;
-             $("#validationFdbk").html("Question 2 was not answered");
-        }
-
-        if ($("#q4").val() == "") {
-            isValid = false;
-            $("#validationFdbk").html("Question 4 was not answered");
-       }
-        return isValid;
-    }
-
    function rightAnswer(index){
         $(`#q${index}Feedback`).html("Correct!");
         $(`#q${index}Feedback`).attr("class", "bg-success text-white");
@@ -68,12 +51,9 @@ $(document).ready(function(){
         $(`#markImg${index}`).html("<img src ='/img/xmark.png'>");
    }
 
-    function gradeQuiz(){
-
-        $("#validationFdbk").html("");//resets validation feedback
-            if(!isFormValid()){
-                return;
-            }
+   //Grade quiz
+    $("form").on("submit", e => {
+        e.preventDefault();
         //variables
         score = 0;
 
@@ -134,6 +114,6 @@ $(document).ready(function(){
         localStorage.setItem("total_attempts", attempts);
 
 
-        }
+      });
 
 })
