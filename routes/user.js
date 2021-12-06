@@ -46,16 +46,16 @@ module.exports = (app) => {
     app.get("/chapter", userAuth, function(req, res){
         res.render("chapter", {admin : req.admin});
     });
+  
+    app.get('/resources', userAuth, function(req , res){
+        res.render('resources', {admin : req.admin});
+    });
 
     app.get('/quizzes', userAuth, function(req , res){
         res.render('quizzes', {admin : req.admin});
     });
 
-    app.get('/resources', userAuth, function(req , res){
-        res.render('resources');
-    });
-
-    app.get('/quizzes/:id', function(req , res){
+    app.get('/quizzes/:id', userAuth, function(req , res){
         res.render('quiz' + req.params.id, {admin : req.admin});
     });
 };

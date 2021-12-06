@@ -1,9 +1,6 @@
 $(document).ready(function(){
     //global variables
     var score = 0;
-    var attempts = localStorage.getItem("total_attempts");
-     //event listeners
-    $("button").on("click", gradeQuiz);
 
     displayQ1Choices();
 
@@ -52,35 +49,18 @@ $(document).ready(function(){
         }
     }
 
-     //functions
-    function isFormValid(){
-        let isValid = true;
-        if ($("#q4").val() == "") {
-             isValid = false;
-             $("#validationFdbk").html("Question 4 was not answered");
-        }
-        return isValid;
-    }
-
    function rightAnswer(index){
-        $(`#q${index}Feedback`).html("Correct!");
-        $(`#q${index}Feedback`).attr("class", "bg-success text-white");
-        $(`#markImg${index}`).html("<img src ='/img/checkmark.png'>");
+        $(`#q${index}Feedback`).html(`<span class="badge bg-success w-25 m-3">Correct!</span>`);
         score += 20;
    }
 
    function wrongAnswer(index){
-        $(`#q${index}Feedback`).html("Incorrect!");
-        $(`#q${index}Feedback`).attr("class", "bg-warning text-white");
-        $(`#markImg${index}`).html("<img src ='/img/xmark.png'>");
+        $(`#q${index}Feedback`).html(`<span class="badge bg-danger w-25 m-3">Incorrect!</span>`);
    }
 
-    function gradeQuiz(){
-
-        $("#validationFdbk").html("");//resets validation feedback
-            if(!isFormValid()){
-                return;
-            }
+   //Grade quiz
+    $("form").on("submit", e => {
+        e.preventDefault();
         //variables
         score = 0;
 
@@ -127,8 +107,7 @@ $(document).ready(function(){
 
         //$("totalScore").html(`Total Score: ${score}`);
 
-      if(score >= 80 )
-        {
+        if(score >= 80 ){
             $("#totalScore").html("Your final score is: " + score).attr("class", "correct");
             $("#congratulations").html("Congrats on a great score!").attr("class", "correct");
         }
@@ -137,10 +116,7 @@ $(document).ready(function(){
             $("#totalScore").html("Your final score is: " + score).attr("class", "incorrect");
             $("#congratulations").html("Better luck next time...").attr("class", "incorrect");
         }
-        $("#totalAttempts").html(`Total Attempts: ${++attempts}`);
-        localStorage.setItem("total_attempts", attempts);
 
-
-        }
+      });
 
 })
