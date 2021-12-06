@@ -51,6 +51,10 @@ module.exports = (app) => {
         res.render('quizzes', {admin : req.admin});
     });
 
+    app.get('/resources', userAuth, function(req , res){
+        res.render('resources');
+    });
+
     app.get('/quizzes/:id', function(req , res){
         res.render('quiz' + req.params.id, {admin : req.admin});
     });

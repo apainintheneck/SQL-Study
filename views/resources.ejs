@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/head.ejs') %>
+    <link href="/css/sidebar.css" rel="stylesheet"/>
+  </head>
+
+<body>
+  <%- include('partials/sidebar.ejs') %>
+        <!-- Page content holder -->
+  <main id="content">
+    <div class="mx-auto mb-5" style="max-width: 50rem;">
+
+      <div class="card border-secondary">
+        <img src="img/db-graphic.jpg" class="card-img-top" alt="background image which shows a cloud and a databse">
+        <div class="card-body">
+          <h5 class="card-title">Resources Section</h5>
+          <p class="card-text">Knowledge does not have boundaries or limitations. Resources here can help users expand their knowledge.</p>
+        </div>
+      </div>
+
+      <a href="https://www.youtube.com/results?search_query=sql+study" target="_blank">
+        <div class="card border-primary mt-4">
+          <div class="card-body">
+            <h5 class="card-title"><span class="badge bg-primary">Viedo Section</span></h5>
+            <p class="card-text">SQL Video Club</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.com/gp/bestsellers/books/3804" target="_blank">
+        <div class="card border-primary mt-4">
+          <div class="card-body">
+            <h5 class="card-title"><span class="badge bg-primary">Books Section</span></h5>
+            <p class="card-text">SQL Book Club</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://www.udemy.com/courses/search/?q=sql+database&src=sac&kw=sql+databas" target="_blank">
+        <div class="card border-primary mt-4">
+          <div class="card-body">
+            <h5 class="card-title"><span class="badge bg-primary">Bootcamp Section</span></h5>
+            <p class="card-text">SQL Bootcamp Club</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </main>
+</body>
+</html>
