@@ -11,12 +11,19 @@
 
         <main id="content">
             <div class="mx-auto card bg-light mt-5 mb-5" style="max-width: 45rem;">
+                <img src="/img/db-graphic-banner.png" class="card-img-top" alt="background image which shows a cloud and a database">
                 <div class="card-header">Add New Chapter</div>
                 <div class="card-body">
 
                     <button onclick="window.location.href='/admin';" type="button" class="btn btn-secondary">Return</button>
 
                     <hr>
+
+                    <% if(typeof added != 'undefined' && added) { %>
+                    <div class="alert alert-primary" role="alert">
+                    Chapter added successfully! <a href="/lecture" class="alert-link">Click here to see it in action</a>.
+                    </div>
+                    <% } %>
 
                     <form method="POST">
 

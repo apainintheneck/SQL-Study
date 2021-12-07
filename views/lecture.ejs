@@ -17,6 +17,14 @@
         <div class="card-body">
           <h5 class="card-title">Lecture Section</h5>
           <p class="card-text">Learn the basics of SQL with the help of explanations, videos, tables and graphics.</p>
+
+          <% if(admin) { %>
+          <br>
+          <div class="alert alert-primary text-center" role="alert">
+          Hi admin! <a href="/admin/chapters/edit" class="alert-link">Click here to edit a chapter</a>.
+          </div>
+          <% } %>
+
         </div>
       </div>
 

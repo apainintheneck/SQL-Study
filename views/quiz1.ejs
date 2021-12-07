@@ -1,62 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title> Chapter 1 Quiz </title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link rel="stylesheet" href="/css/sidebar.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" ></script>
-        <script src="/js/quiz1.js"></script>
-    </head>
+<html>
+  <head>
+    <%- include('partials/head.ejs') %>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link href="/css/sidebar.css" rel="stylesheet"/>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" ></script>
+    <script src="/js/quiz1.js"></script>
+  </head>
 
-    <body>
+<body>
+  <%- include('partials/sidebar.ejs') %>
+        <!-- Page content holder -->
+  <main id="content">
+    <div class="mx-auto mb-5" style="max-width: 50rem;">
 
-        <%- include('partials/sidebar.ejs') %>
-
-        <div id="content" class="text-center">
-
-            <h1 class="jumbotron mx-auto" style="color: black; max-width: 60rem;">Chapter 1 Comprehension Quiz</h1>
-
-            <div class="card mx-auto pt-5 pb-5 mb-5" style="max-width: 60rem; background-color:#081A51; color: white;">
-                <h3><span id ="markImg1"></span>A self describing collection of related records is known as a __________.</h3>
-                <div id="q1Choices"></div>
-                <div id ="q1Feedback"></div>
-                <hr>
-
-                <h3><span id ="markImg2"></span>Which of these is not a type of database?</h3>
-                <div id="q2Choices"></div>
-                <div id ="q2Feedback"></div>
-                <hr>
-
-                <h3><span id ="markImg3"></span>Nonrelational databases use tables</h3>
-                <div id="q3Choices"></div>
-                <div id ="q3Feedback"></div>
-                <hr>
-
-                <h3><span id ="markImg4"></span>A column referencing another table is is known as a  __________  key.</h3>
-                <input type="text" id="q4" class="w-25 mx-auto">
-                <div id ="q4Feedback"></div>
-                <hr>
-
-                <h3><span id ="markImg5"></span>The type of relational database we discussed in chapter 1 was ___________</h3>
-                <div id="q5Choices"></div>
-                <div id ="q5Feedback"></div>
-
-                <h3 id="validationFdbk" class="bg-danger text-white"></h3>
-                <button class="btn btn-outline-success w-25 mx-auto"> Submit Quiz </button>
-                <br><br>
-
-                <h2 id="totalScore" class = "text-info"></h2>
-
-                <h2 id ="congratulations"></h2>
-
-
-                <h3 id="totalAttempts"></h3>
-
-                <%- include('partials/footer.ejs') %>
-            </div>
+      <div class="card border-secondary mb-5">
+        <img src="/img/db-graphic-banner.png" class="card-img-top" alt="background image which shows a cloud and a database">
+        <div class="card-body text-center">
+          <h3 class="card-title"><span class="badge bg-primary">Chapter 1</span> <span class="badge bg-light text-dark">Comprehension Quiz</span></h3>
         </div>
-    </body>
+      </div>
 
-    </html>
+      <div class="card mx-auto pt-5 pb-5 mb-5 text-center" style="background-color:#081A51; color: white;">
+        <form>
+          <h4>A self describing collection of related records is known as a __________.</h4>
+          <div id="q1Choices"></div>
+          <h4 id ="q1Feedback"></h4>
+          <hr>
+
+          <h4></span>Which of these is not a type of database?</h4>
+          <div id="q2Choices"></div>
+          <h4 id ="q2Feedback"></h4>
+          <hr>
+
+          <h4>Nonrelational databases use tables</h4>
+          <div id="q3Choices"></div>
+          <h4 id ="q3Feedback"></h4>
+          <hr>
+
+          <h4>A column referencing another table is is known as a  __________  key.</h4>
+          <input type="text" id="q4" class="form-control w-25 mx-auto" required>
+          <h4 id ="q4Feedback"></h4>
+          <hr>
+
+          <h4>The type of relational database we discussed in chapter 1 was ___________</h4>
+          <div id="q5Choices"></div>
+          <h4 id ="q5Feedback"></h4>
+
+          <hr>
+          <button type="submit" class="btn btn-primary w-25 mx-auto"><b> Submit Quiz </b></button>
+        </form>
+        <br><br>
+
+        <h4 id="totalScore" class = "text-info"></h4>
+
+        <h4 id ="congratulations"></h4>
+
+        <%- include('partials/footer.ejs') %>
+      </div>
+
+    </div>
+
+  </main>
+</body>
+</html>

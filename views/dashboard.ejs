@@ -14,7 +14,7 @@
       <div class="card border-secondary">
         <img src="img/db-graphic.jpg" class="card-img-top" alt="background image which shows a cloud and a databse">
         <div class="card-body">
-          <h5 class="card-title">Welcome back, username!</h5>
+          <h5 class="card-title">Welcome back<% if (username) { %>, <%= username %><% } %>!</h5>
           <p class="card-text">Check out the lecture, quizzes and sandbox section to continue learning.</p>
           <h5 class="card-title">Progress</h5>
           <div class="progress">
@@ -23,7 +23,13 @@
           <br>
           <p class="card-text">You're making good progress learning SQL. Keep it up!</p>
           <br>
-          <a href="#" class="btn btn-primary">Last Article Read</a>
+          <a href="
+          <% if (lastVisited) { %>
+            <%= lastVisited %>
+          <% } else { %>
+            /chapter?id=1
+          <% } %>
+          " class="btn btn-primary">Last Article Read</a>
         </div>
       </div>
 

@@ -8,7 +8,7 @@ module.exports = (app) => {
     2. /chapters?action=titles
         -Returns the id and title for every chapter
     */
-    app.get("/chapters", function(req, res){
+    app.get("/api/chapters", function(req, res){
         let sql;
         let sqlParams = [];
         switch (req.query.action) {
@@ -42,8 +42,10 @@ module.exports = (app) => {
         -Returns an entire chapter of pages based upon the chapter_id
     3. /pages?action=titles
         -Returns all titles in the format: page_title, page_id, chapter_title, chapter_id
+    4. /pages?action=visit&chapterId={}&pageInd={}
+        -Updates the lastVisited part of the users table.
     */
-    app.get("/pages", function(req, res){
+    app.get("/api/pages", function(req, res){
         let sql;
         let sqlParams = [];
 
@@ -64,6 +66,9 @@ module.exports = (app) => {
                                   ON ch.id = p.chapter_id
                               ORDER BY ch.id, p.id
                               `;
+                              break;
+            case "visit":     sql = `UPDATE users SET lastVisited = ? WHERE id = ?`;
+                              sqlParams.push(`/chapter?id=${req.query.chapterId}&pageInd=${req.query.pageInd}`, req.session.passport.user.id);
                               break;
             default:          res.status(400).send('Invalid API action');
                               return;

@@ -2,8 +2,7 @@
 <html>
 <head>
     <title>SQL Study</title>
-    <link rel="stylesheet" href="css/login-bootstrap.css">
-    <link href="css/login-styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/login.min.css">
 </head>
 <body style ="background-color:#081A51;">
   <nav>
@@ -11,8 +10,8 @@
         <img src="/img/sql study logo.png" alt="" width="120" height="96" class="d-inline-block align-text-top">
         <a class="nav-link" href="/" style = "padding-right: 50px; text-decoration: none; color:white;">Home</a>
         <a class = "nav-link"href="/about" style = "padding-right: 50px; text-decoration: none; color:white;">About</a>
-        <a class = "active"href="/login" style = "padding-right: 50px; text-decoration: none; ">Log In</a>
-        <a class = "nav-link"href="/signup" style = "padding-right: 50px; text-decoration: none; color:white;">Sign Up</a>
+        <a class = "nav-link"href="/login" style = "padding-right: 50px; text-decoration: none;  color:white;">Log In</a>
+        <a class = "active"href="/signup" style = "padding-right: 50px; text-decoration: none; ">Sign Up</a>
     </div>
 </nav>
   <section class="ftco-section">
@@ -29,7 +28,6 @@
                 <img src="/img/sql study logo.png" alt="" width="120" height="96" class="d-inline-block align-text-top">
 								<h2>Welcome to SQL Study</h2>
 								<p>Sign Up for an Account Here</p>
-								<!-- <a href="#" class="btn btn-white btn-outline-white">Sign Up</a> -->
 							</div>
 			      </div>
               <div class="login-wrap p-4 p-lg-5">
@@ -42,13 +40,13 @@
                     <label for="password" class="sr-only">Password</label>
                     <input type="password" id="password" name="password" value="<%= userData.password %>" class="form-control" placeholder="Password" required> <br>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-              
+
                     <%- include('partials/flash_messages'); %>
-                    
+
                     <br/>
                     <p>or</p>
-                    <!-- <a href="/auth/facebook">Sign up via Facebook</a> -->
-                    <br/>
+                    <!-- <a href="/auth/facebook">Sign up via Facebook</a>
+                    <br/> -->
                     <a href="/auth/google">Sign up via Google</a>
                   </form>
                 </div>

@@ -2,8 +2,7 @@
 <html>
 <head>
     <title>SQL Study</title>
-    <link rel="stylesheet" href="css/login-bootstrap.css">
-    <link href="/css/login-styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/login.min.css">
 </head>
 <body style ="background-color:#081A51;">
   <nav>
@@ -29,7 +28,7 @@
                 <img src="/img/sql study logo.png" alt="" width="120" height="96" class="d-inline-block align-text-top">
 								<h2>Welcome to SQL Study</h2>
 								<p>Don't have an account?</p>
-								<a href="#" class="btn btn-white btn-outline-white">Sign Up</a>
+								<a href="/signup" class="btn btn-white btn-outline-white">Sign Up</a>
 							</div>
 			      </div>
 						<div class="login-wrap p-4 p-lg-5">
@@ -40,13 +39,13 @@
 							<label for="password" class="sr-only">Password</label>
 							<input type="password" id="password" name="password" class="form-control" placeholder="Password" required> <br>
 							<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-							
+
 							<%- include('partials/flash_messages'); %>
-							
+
 							<br/>
 							<p>or</p>
-							<!-- <a href="/auth/facebook">Sign in via Facebook</a> -->
-							<br/>
+							<!-- <a href="/auth/facebook">Sign in via Facebook</a>
+							<br/> -->
 							<a href="/auth/google">Sign in via Google</a>
 							</form>
 		        		</div>
